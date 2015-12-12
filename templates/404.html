@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Page Not Found{% endblock %}
+{% block content %}
+<body>
+    <div class="container">
+        <div class="col-md-12">
+            <div class="row">
+                <h1>Page Not Found</h1>
+                What you were looking for is just not there. Go somewhere
+                <a href="{{ url_for('home') }}">nice</a>.
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock %}
