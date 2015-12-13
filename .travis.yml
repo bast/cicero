@@ -1,0 +1,16 @@
+language:
+  - python
+
+python:
+  - 3.4
+
+install:
+  - pip install -r requirements.txt
+
+script:
+  - py.test -vv images.py
+  - pep8 app.py
+  - pep8 images.py
+
+notifications:
+  email: false
