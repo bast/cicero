@@ -14,8 +14,8 @@ install:
 
 script:
   - py.test -vv images.py
-  - pep8 app.py
-  - pep8 images.py
+  - pep8 --ignore=E501 app.py
+  - pep8 --ignore=E501 images.py
 
 notifications:
   email: false
