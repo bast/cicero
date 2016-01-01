@@ -16,7 +16,7 @@ def home():
         markdown = mkdfile.readlines()
 
     markdown = ''.join(fix_images(markdown, 'images/'))
-    
+
     return flask.render_template('slides.html', markdown=markdown)
 
 

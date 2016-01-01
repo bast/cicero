@@ -23,7 +23,7 @@ if __name__ == '__main__':
         app.config['image_dir'] = os.path.dirname(args.filename)
     else:
         from github_app import app
-        
+
     app.debug = args.debug
 
     app.run(host=args.host, port=args.port)
