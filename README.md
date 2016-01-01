@@ -3,3 +3,8 @@
 # Cicero
 
 Serving slides written in markdown: http://cicero.xyz
+
+
+## Contributors
+
+- Ole Martin Bjørndalen (local preview)
