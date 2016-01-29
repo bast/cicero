@@ -1,9 +1,9 @@
 import os
-from argparse import ArgumentParser
+import argparse
 
 
 def parse_args():
-    parser = ArgumentParser()
+    parser = argparse.ArgumentParser()
     arg = parser.add_argument
 
     arg('--file', '-f', dest='filename', help='Serve local file')
