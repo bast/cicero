@@ -1,7 +1,5 @@
 import re
 
-# ------------------------------------------------------------------------------
-
 
 def expand_img_link(s, prefix):
 
@@ -28,8 +26,6 @@ def test_expand_img_link():
     assert expand_img_link('[Raboof](img/pie.jpg)', 'foo/') == '[Raboof](img/pie.jpg)'
     assert expand_img_link('img src', 'foo/') == 'img src'
     assert expand_img_link('<img src="img/phd_final.gif" style="width: 400px;"/>', 'foo/') == '<img src="foo/img/phd_final.gif" style="width: 400px;"/>'
-
-# ------------------------------------------------------------------------------
 
 
 def fix_images(s, prefix):
