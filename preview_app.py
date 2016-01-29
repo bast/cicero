@@ -1,9 +1,5 @@
-import os
-import sys
 import io
 import flask
-import urllib
-import re
 
 from images import fix_images
 
