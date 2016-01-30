@@ -1,9 +1,12 @@
 import flask
 import urllib
 
+import paths
 from images import fix_images
 
-app = flask.Flask('Cicero')
+app = flask.Flask('Cicero',
+                  template_folder=paths.TEMPLATE_FOLDER,
+                  static_folder=paths.STATIC_FOLDER)
 
 
 @app.route('/')
