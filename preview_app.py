@@ -1,9 +1,12 @@
 import io
 import flask
 
+import paths
 from images import fix_images
 
-app = flask.Flask('Cicero Preview')
+app = flask.Flask('Cicero Preview',
+                  template_folder=paths.TEMPLATE_FOLDER,
+                  static_folder=paths.STATIC_FOLDER)
 
 
 @app.route('/')
