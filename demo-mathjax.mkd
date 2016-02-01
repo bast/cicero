@@ -4,6 +4,12 @@ class: center, middle, inverse
 ---
 #remark
 [ri-mahrk]
+
+.author[Foo Bar]
+
+.institution[University of There]
+
+.date[27 January]
 .footnote[Go directly to [project site](https://github.com/gnab/remark)]
 ---
 ## What is it and why should I be using it?
@@ -329,6 +335,29 @@ Getting up and running is done in only a few steps:
 
 For more information on using remark, please check out the [wiki](https://github.com/gnab/remark/wiki) pages.
 ]
+---
+class: left
+
+##  How About Some Gnarly Equations?
+
+I'm glad you asked.  With a link to the MathJax Javascript library, you can
+write inline equations  `\(E=mc^2\)`, or full-line equations like:
+
+`$$\Gamma(t)=  \pi \, \Im\left\{ \mathbf{x}_+^H(t) \, \frac{\mathrm{d}}{\mathrm{d} t}\mathbf{x}_+(t)\right\}$$`
+
+You can just write in LaTeX, with minor modifications for specifying in-line or
+full-line equations.  Also, in Remark, the equations are surrounded by
+backquotes, as you see in the source.
+
+
+[{MathJax}](https://www.mathjax.org/) lets you write your equations in other ways; see the documentation for details.
+
+
+Note that writing equations in MathJax impacts the portability of your talk.
+Currently, this template links to a local copy of Remark, but a remote (online)
+copy of MathJax.  If you want the equations to work when you are offline, you
+need to copy the entire MathJax project, about 150 Mb.  See the comments at the
+bottom of this file.
 ---
 name: last-page
 template: inverse
