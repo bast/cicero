@@ -5,6 +5,10 @@
 
 Serving slides written in markdown: http://cicero.xyz
 
+In the background uses [remark](https://github.com/gnab/remark),
+a simple, in-browser, markdown-driven slideshow tool
+(created by [Ole Petter Bang](https://github.com/gnab)).
+
 
 ## Contributors
 
