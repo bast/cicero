@@ -12,12 +12,17 @@ def home():
 @blueprint.route('/v1/github/<user_name>/<repo_name>/<branch_name>/<file_name>/remark/')
 def talk(user_name, repo_name, branch_name, file_name):
     try:
-        f = urllib.urlopen("https://raw.githubusercontent.com/%s/%s/%s/%s" % (user_name, repo_name, branch_name, file_name))
-        markdown = f.readlines()
-        if markdown == "Not Found":
+        url = 'https://raw.githubusercontent.com/{}/{}/{}/{}'.format(
+                user_name, repo_name, branch_name, file_name)
+
+        response = urllib.urlopen(url)
+
+        markdown = response.readlines()
+        if markdown == 'Not Found':
             return flask.render_template('404.html')
-        # we do not use https://raw.githubusercontent.com because it does not handle svg files
-        prefix = "https://cdn.rawgit.com/%s/%s/%s/" % (user_name, repo_name, branch_name)
+
+            # we do not use https://raw.githubusercontent.com because it does not handle svg files
+        prefix = 'https://cdn.rawgit.com/{}/{}/{}/'.format(user_name, repo_name, branch_name)
         return flask.render_template('slides.html', markdown=''.join(fix_images(markdown, prefix)))
     except IOError:
         return flask.render_template('404.html')
