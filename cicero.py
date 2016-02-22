@@ -1,29 +1,4 @@
-import os
-import argparse
+import sys
+from cicero.main import main
 
-
-def parse_args():
-    parser = argparse.ArgumentParser()
-    arg = parser.add_argument
-
-    arg('--file', '-f', dest='filename', help='Serve local file')
-    arg('--debug', dest='debug', action='store_true', default=False)
-    arg('--host', dest='host', default=os.environ.get('HOST', '0.0.0.0'))
-    arg('--port', dest='port', type=int, default=int(os.environ.get('PORT', 5000)))
-
-    return parser.parse_args()
-
-
-if __name__ == '__main__':
-    args = parse_args()
-
-    if args.filename:
-        from cicero.preview import app
-        app.config['filename'] = args.filename
-        app.config['image_dir'] = os.path.dirname(args.filename)
-    else:
-        from cicero.git import app
-
-    app.debug = args.debug
-
-    app.run(host=args.host, port=args.port)
+sys.exit(main())

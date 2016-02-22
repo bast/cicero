@@ -1,17 +1,15 @@
 import io
 import flask
-
-from . import paths
 from .images import fix_images
 
-app = flask.Flask('Cicero Preview',
-                  template_folder=paths.TEMPLATE_FOLDER,
-                  static_folder=paths.STATIC_FOLDER)
+blueprint = flask.Blueprint('preview', __name__)
 
 
-@app.route('/')
+@blueprint.route('/')
 def home():
-    with io.open(app.config['filename'], 'r', encoding='utf-8') as mkdfile:
+    config = flask.current_app.config
+
+    with io.open(config['filename'], 'r', encoding='utf-8') as mkdfile:
         markdown = mkdfile.readlines()
 
     markdown = ''.join(fix_images(markdown, 'images/'))
@@ -19,11 +17,12 @@ def home():
     return flask.render_template('slides.html', markdown=markdown)
 
 
-@app.route('/images/<path:path>')
+@blueprint.route('/images/<path:path>')
 def serve_image(path):
-    return flask.send_from_directory(app.config['image_dir'], path)
+    config = flask.current_app.config
+    return flask.send_from_directory(config['imagedir'], path)
 
 
-@app.errorhandler(404)
+@blueprint.errorhandler(404)
 def page_not_found(e):
     return flask.render_template('404.html'), 404
