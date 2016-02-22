@@ -4,6 +4,7 @@ from .images import fix_images
 
 blueprint = flask.Blueprint('git', __name__)
 
+
 @blueprint.route('/')
 def home():
     return flask.render_template('index.html')
@@ -12,8 +13,7 @@ def home():
 @blueprint.route('/v1/github/<user_name>/<repo_name>/<branch_name>/<file_name>/remark/')
 def talk(user_name, repo_name, branch_name, file_name):
     try:
-        url = 'https://raw.githubusercontent.com/{}/{}/{}/{}'.format(
-                user_name, repo_name, branch_name, file_name)
+        url = 'https://raw.githubusercontent.com/{}/{}/{}/{}'.format(user_name, repo_name, branch_name, file_name)
 
         response = urllib.urlopen(url)
 
