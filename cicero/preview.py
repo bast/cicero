@@ -1,8 +1,8 @@
 import io
 import flask
 
-import paths
-from images import fix_images
+from . import paths
+from .images import fix_images
 
 app = flask.Flask('Cicero Preview',
                   template_folder=paths.TEMPLATE_FOLDER,

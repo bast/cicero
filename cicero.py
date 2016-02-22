@@ -18,11 +18,11 @@ if __name__ == '__main__':
     args = parse_args()
 
     if args.filename:
-        from preview_app import app
+        from cicero.preview import app
         app.config['filename'] = args.filename
         app.config['image_dir'] = os.path.dirname(args.filename)
     else:
-        from github_app import app
+        from cicero.git import app
 
     app.debug = args.debug
 

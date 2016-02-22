@@ -2,7 +2,7 @@ import flask
 import urllib
 
 import paths
-from images import fix_images
+from .images import fix_images
 
 app = flask.Flask('Cicero',
                   template_folder=paths.TEMPLATE_FOLDER,
