@@ -1,7 +1,5 @@
-import re
-
-
 def expand_img_link(s, prefix):
+    import re
 
     if '![' in s and '](' in s:
         if 'http' not in s:

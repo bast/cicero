@@ -12,5 +12,5 @@ created by [Ole Petter Bang](https://github.com/gnab).
 
 ## Contributors
 
-- [Ole Martin Bjørndalen](https://github.com/olemb) (local preview)
+- [Ole Martin Bjørndalen](https://github.com/olemb) (local preview and Blueprint solution)
 - [Roberto Di Remigio](https://github.com/robertodr) (MathJax support)

@@ -1,12 +1,8 @@
-import os
-import argparse
-from .app import app
-from . import git
-from . import preview
-
-
 def parse_args():
-    parser = argparse.ArgumentParser()
+    from argparse import ArgumentParser
+    import os
+
+    parser = ArgumentParser()
     arg = parser.add_argument
 
     arg('--file', '-f', dest='filename', help='Serve local file')
@@ -18,6 +14,11 @@ def parse_args():
 
 
 def main():
+    import os
+    from .app import app
+    from . import git
+    from . import preview
+
     args = parse_args()
 
     if args.filename:

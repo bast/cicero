@@ -1,6 +1,4 @@
 import flask
-import urllib
-from .images import fix_images
 
 blueprint = flask.Blueprint('git', __name__)
 
@@ -12,10 +10,13 @@ def home():
 
 @blueprint.route('/v1/github/<user_name>/<repo_name>/<branch_name>/<file_name>/remark/')
 def talk(user_name, repo_name, branch_name, file_name):
+    from urllib import urlopen
+    from .images import fix_images
+
     try:
         url = 'https://raw.githubusercontent.com/{}/{}/{}/{}'.format(user_name, repo_name, branch_name, file_name)
 
-        response = urllib.urlopen(url)
+        response = urlopen(url)
 
         markdown = response.readlines()
         if markdown == 'Not Found':
