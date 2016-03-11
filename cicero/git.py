@@ -10,15 +10,16 @@ def home():
 
 @blueprint.route('/v1/github/<user_name>/<repo_name>/<branch_name>/<file_name>/remark/')
 def talk(user_name, repo_name, branch_name, file_name):
-    from urllib import urlopen
+    from urllib import request
     from .images import fix_images
 
     try:
         url = 'https://raw.githubusercontent.com/{}/{}/{}/{}'.format(user_name, repo_name, branch_name, file_name)
 
-        response = urlopen(url)
+        response = request.urlopen(url)
 
         markdown = response.readlines()
+        markdown = [line.decode("utf-8") for line in markdown]
         if markdown == 'Not Found':
             return flask.render_template('404.html')
 
