@@ -22,8 +22,14 @@ def render_github_markdown(namespace, repo, branch, file_name):
         if markdown == 'Not Found':
             return flask.render_template('404.html')
 
-            # we do not use https://raw.githubusercontent.com because it does not handle svg files
-        prefix = 'https://cdn.rawgit.com/{}/{}/{}/'.format(namespace, repo, branch)
+        # we do not use https://raw.githubusercontent.com because it does not handle svg files
+        if '/' in file_name:
+            # we define root as everything except the last file
+            root = '/'.join(file_name.split('/')[:-1])
+            prefix = 'https://cdn.rawgit.com/{}/{}/{}/{}/'.format(namespace, repo, branch, root)
+        else:
+            prefix = 'https://cdn.rawgit.com/{}/{}/{}/'.format(namespace, repo, branch)
+
         return flask.render_template('slides.html', markdown=''.join(fix_images(markdown, prefix)))
     except IOError:
         return flask.render_template('404.html')
