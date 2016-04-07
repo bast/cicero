@@ -14,3 +14,21 @@ created by [Ole Petter Bang](https://github.com/gnab).
 
 - [Ole Martin Bjørndalen](https://github.com/olemb) (local preview and Blueprint solution)
 - [Roberto Di Remigio](https://github.com/robertodr) (MathJax support)
+
+
+## API
+
+### v1 (deprecated but supported)
+
+- Does not support files in subdirectories.
+```
+/v1/github/<namespace>/<repo>/<branch>/<file>/remark/
+```
+
+
+### v2
+
+- Supports files in subdirectories.
+```
+/v2/remark/github/<namespace>/<repo>/<branch>/<file>/
+```
