@@ -25,7 +25,6 @@ def render_github_markdown(namespace, repo, branch, file_name):
             # we do not use https://raw.githubusercontent.com because it does not handle svg files
         prefix = 'https://cdn.rawgit.com/{}/{}/{}/'.format(namespace, repo, branch)
         return flask.render_template('slides.html', markdown=''.join(fix_images(markdown, prefix)))
-        return flask.render_template('slides.html', markdown=markdown)
     except IOError:
         return flask.render_template('404.html')
 
