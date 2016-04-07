@@ -46,13 +46,16 @@ def render_v1(namespace, repo, branch, f1):
 def render_v2_1(namespace, repo, branch, f1):
     return render_github_markdown(namespace, repo, branch, f1)
 
+
 @blueprint.route('/v2/remark/github/<namespace>/<repo>/<branch>/<f1>/<f2>/')
 def render_v2_2(namespace, repo, branch, f1, f2):
     return render_github_markdown(namespace, repo, branch, '/'.join([f1, f2]))
 
+
 @blueprint.route('/v2/remark/github/<namespace>/<repo>/<branch>/<f1>/<f2>/<f3>/')
 def render_v2_3(namespace, repo, branch, f1, f2, f3):
     return render_github_markdown(namespace, repo, branch, '/'.join([f1, f2, f3]))
+
 
 @blueprint.route('/v2/remark/github/<namespace>/<repo>/<branch>/<f1>/<f2>/<f3>/<f4>/')
 def render_v2_4(namespace, repo, branch, f1, f2, f3, f4):
