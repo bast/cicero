@@ -59,7 +59,7 @@ app.controller('Ctrl', ['$scope', '$http', function($scope, $http) {
     $scope.link_generated = false;
     $scope.generate_link = function () {
 
-        var s = 'http://cicero.xyz/v1/github/';
+        var s = 'http://cicero.xyz/v2/remark/github/';
         s += $scope.user;
         s += '/';
         s += $scope.repo.name;
@@ -67,7 +67,7 @@ app.controller('Ctrl', ['$scope', '$http', function($scope, $http) {
         s += $scope.branch.name;
         s += '/';
         s += $scope.file.path;
-        s += '/remark/';
+        s += '/';
         $scope.link = s;
 
         s = 'https://github.com/';
