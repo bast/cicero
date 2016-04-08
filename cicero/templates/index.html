@@ -22,7 +22,7 @@
                         </div>
 
                         <div class="form-group">
-                            <div ng-show="repos_loaded">
+                            <div ng-show="show_repos">
                                 <h4>Select repository:</h4>
                                 <select class="form-control" ng-model="repo" ng-change="load_branches()" ng-options="item.name for item in repos">
                                 </select>
@@ -30,7 +30,7 @@
                         </div>
 
                         <div class="form-group">
-                            <div ng-show="branches_loaded">
+                            <div ng-show="show_branches">
                                 <h4>Select branch:</h4>
                                 <select class="form-control" ng-model="branch" ng-change="load_files()" ng-options="item.name for item in branches">
                                 </select>
@@ -38,7 +38,7 @@
                         </div>
 
                         <div class="form-group">
-                            <div ng-show="files_loaded">
+                            <div ng-show="show_files">
                                 <h4>Select Markdown file to render:</h4>
                                 <select class="form-control" ng-model="file" ng-change="generate_link()" ng-options="item.path for item in files">
                                 </select>

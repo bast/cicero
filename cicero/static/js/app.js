@@ -23,38 +23,38 @@ app.controller('Ctrl', ['$scope', '$http', function($scope, $http) {
 
     $scope.repo = '';
     $scope.repos = [];
-    $scope.repos_loaded = false;
+    $scope.show_repos = false;
     $scope.load_repos = function () {
-        $scope.repos_loaded = false;
-        $scope.branches_loaded = false;
-        $scope.files_loaded = false;
+        $scope.show_repos = false;
+        $scope.show_branches = false;
+        $scope.show_files = false;
 
         $http.get("https://api.github.com/users/" + $scope.user + "/repos?per_page=1000")
             .success(function(data) {
                 $scope.repos = data;
-                $scope.repos_loaded = true;
+                $scope.show_repos = true;
             })
     };
 
     $scope.branch = '';
     $scope.branches = [];
-    $scope.branches_loaded = false;
+    $scope.show_branches = false;
     $scope.load_branches = function () {
-        $scope.branches_loaded = false;
-        $scope.files_loaded = false;
+        $scope.show_branches = false;
+        $scope.show_files = false;
 
         $http.get("https://api.github.com/repos/" + $scope.user + "/" + $scope.repo.name + "/branches")
             .success(function(data) {
                 $scope.branches = data;
-                $scope.branches_loaded = true;
+                $scope.show_branches = true;
             })
     };
 
     $scope.file = '';
     $scope.files = [];
-    $scope.files_loaded = false;
+    $scope.show_files = false;
     $scope.load_files = function () {
-        $scope.files_loaded = false;
+        $scope.show_files = false;
 
         $http.get("https://api.github.com/repos/" + $scope.user + "/" + $scope.repo.name + "/git/refs/heads/" + $scope.branch.name)
             .success(function(data) {
@@ -68,7 +68,7 @@ app.controller('Ctrl', ['$scope', '$http', function($scope, $http) {
                             $scope.files.push(_files[i]);
                         }
                     }
-                    $scope.files_loaded = true;
+                    $scope.show_files = true;
                 })
             })
     };
