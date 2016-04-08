@@ -86,7 +86,7 @@ app.controller('Ctrl', ['$scope', '$http', function($scope, $http) {
 
     $scope.link = '';
     $scope.source_link = '';
-    $scope.link_generated = false;
+    $scope.show_links = false;
     $scope.generate_link = function () {
 
         $scope.link = 'http://cicero.xyz/v2/remark/github/'
@@ -108,7 +108,7 @@ app.controller('Ctrl', ['$scope', '$http', function($scope, $http) {
                            + '/'
                            + $scope.file.path;
 
-        $scope.link_generated = true;
+        $scope.show_links = true;
     };
 
 }]);
