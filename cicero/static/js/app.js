@@ -19,16 +19,48 @@ app.config(['$interpolateProvider', function($interpolateProvider) {
 
 app.controller('Ctrl', ['$scope', '$http', function($scope, $http) {
 
-    $scope.user = '';
 
-    $scope.repo = '';
-    $scope.repos = [];
-    $scope.show_repos = false;
-    $scope.load_repos = function () {
-        $scope.show_repos = false;
-        $scope.show_branches = false;
+    function reset_links()
+    {
+        $scope.link = '';
+        $scope.source_link = '';
+        $scope.show_links = false;
+    }
+
+
+    function reset_files()
+    {
+        $scope.file = '';
+        $scope.files = [];
         $scope.show_files = false;
+        reset_links();
+    }
 
+
+    function reset_branches()
+    {
+        $scope.branch = '';
+        $scope.branches = [];
+        $scope.show_branches = false;
+        reset_files();
+    }
+
+
+    function reset_repos()
+    {
+        $scope.repo = '';
+        $scope.repos = [];
+        $scope.show_repos = false;
+        reset_branches();
+    }
+
+
+    $scope.user = '';
+    reset_repos();
+
+
+    $scope.load_repos = function () {
+        reset_repos();
         $http.get("https://api.github.com/users/" + $scope.user + "/repos?per_page=1000")
             .success(function(data) {
                 $scope.repos = data;
@@ -36,13 +68,9 @@ app.controller('Ctrl', ['$scope', '$http', function($scope, $http) {
             })
     };
 
-    $scope.branch = '';
-    $scope.branches = [];
-    $scope.show_branches = false;
-    $scope.load_branches = function () {
-        $scope.show_branches = false;
-        $scope.show_files = false;
 
+    $scope.load_branches = function () {
+        reset_branches();
         $http.get("https://api.github.com/repos/" + $scope.user + "/" + $scope.repo.name + "/branches")
             .success(function(data) {
                 $scope.branches = data;
@@ -61,12 +89,9 @@ app.controller('Ctrl', ['$scope', '$http', function($scope, $http) {
             })
     };
 
-    $scope.file = '';
-    $scope.files = [];
-    $scope.show_files = false;
-    $scope.load_files = function () {
-        $scope.show_files = false;
 
+    $scope.load_files = function () {
+        reset_files();
         $http.get("https://api.github.com/repos/" + $scope.user + "/" + $scope.repo.name + "/git/refs/heads/" + $scope.branch.name)
             .success(function(data) {
             $http.get("https://api.github.com/repos/" + $scope.user + "/" + $scope.repo.name + "/git/trees/" + data.object.sha + "?recursive=1")
@@ -84,11 +109,8 @@ app.controller('Ctrl', ['$scope', '$http', function($scope, $http) {
             })
     };
 
-    $scope.link = '';
-    $scope.source_link = '';
-    $scope.show_links = false;
-    $scope.generate_link = function () {
 
+    $scope.generate_link = function () {
         $scope.link = 'http://cicero.xyz/v2/remark/github/'
                     + $scope.user
                     + '/'
