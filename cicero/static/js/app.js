@@ -60,7 +60,14 @@ app.controller('Ctrl', ['$scope', '$http', function($scope, $http) {
             .success(function(data) {
             $http.get("https://api.github.com/repos/" + $scope.user + "/" + $scope.repo.name + "/git/trees/" + data.object.sha + "?recursive=1")
                 .success(function(data2) {
-                    $scope.files = data2.tree;
+                    $scope.files = [];
+                    var _files = data2.tree;
+                    for (var i = 0; i < _files.length; i++) {
+                        if (_files[i].path.endsWith('.md') || _files[i].path.endsWith('.mkd'))
+                        {
+                            $scope.files.push(_files[i]);
+                        }
+                    }
                     $scope.files_loaded = true;
                 })
             })
