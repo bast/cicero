@@ -14,7 +14,7 @@ def home():
     with io.open(config['filename'], 'r', encoding='utf-8') as mkdfile:
         markdown = mkdfile.readlines()
 
-    markdown = ''.join(fix_images(markdown, 'images/'))
+    markdown = fix_images(markdown, 'images/')
 
     return render_template('slides.html', markdown=markdown)
 

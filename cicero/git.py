@@ -30,7 +30,7 @@ def render_github_markdown(namespace, repo, branch, file_name):
         else:
             prefix = 'https://cdn.rawgit.com/{}/{}/{}/'.format(namespace, repo, branch)
 
-        return flask.render_template('slides.html', markdown=''.join(fix_images(markdown, prefix)))
+        return flask.render_template('slides.html', markdown=fix_images(markdown, prefix))
     except IOError:
         return flask.render_template('404.html')
 

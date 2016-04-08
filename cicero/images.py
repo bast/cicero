@@ -27,4 +27,4 @@ def test_expand_img_link():
 
 
 def fix_images(s, prefix):
-    return [expand_img_link(line, prefix) for line in s]
+    return ''.join([expand_img_link(line, prefix) for line in s])
