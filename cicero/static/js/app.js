@@ -46,7 +46,18 @@ app.controller('Ctrl', ['$scope', '$http', function($scope, $http) {
         $http.get("https://api.github.com/repos/" + $scope.user + "/" + $scope.repo.name + "/branches")
             .success(function(data) {
                 $scope.branches = data;
-                $scope.show_branches = true;
+
+                // if there is only one branch, then we don't force the user to select it
+                // and instead we jump right to file selector
+                if ($scope.branches.length == 1)
+                {
+                    $scope.branch = $scope.branches[0];
+                    $scope.load_files();
+                }
+                else
+                {
+                    $scope.show_branches = true;
+                }
             })
     };
 
