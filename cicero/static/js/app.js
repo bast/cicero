@@ -10,10 +10,12 @@
 
 var app = angular.module('app', []);
 
+
 app.config(['$interpolateProvider', function($interpolateProvider) {
-  $interpolateProvider.startSymbol('{[');
-  $interpolateProvider.endSymbol(']}');
+    $interpolateProvider.startSymbol('{[');
+    $interpolateProvider.endSymbol(']}');
 }]);
+
 
 app.controller('Ctrl', ['$scope', '$http', function($scope, $http) {
 
