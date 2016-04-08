@@ -10,6 +10,7 @@ def home():
 
 def render_github_markdown(namespace, repo, branch, file_name):
     from urllib import request
+    from .title import extract_title
     from .images import fix_images
 
     try:
@@ -17,8 +18,7 @@ def render_github_markdown(namespace, repo, branch, file_name):
 
         response = request.urlopen(url)
 
-        markdown = response.readlines()
-        markdown = [line.decode("utf-8") for line in markdown]
+        markdown = response.read().decode("utf-8")
         if markdown == 'Not Found':
             return flask.render_template('404.html')
 
@@ -30,7 +30,10 @@ def render_github_markdown(namespace, repo, branch, file_name):
         else:
             prefix = 'https://cdn.rawgit.com/{}/{}/{}/'.format(namespace, repo, branch)
 
-        return flask.render_template('slides.html', markdown=fix_images(markdown, prefix))
+        title = extract_title(markdown)
+        return flask.render_template('slides.html',
+                                     title=title,
+                                     markdown=fix_images(markdown, prefix))
     except IOError:
         return flask.render_template('404.html')
 

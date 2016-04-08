@@ -7,16 +7,20 @@ blueprint = Blueprint('preview', __name__)
 def home():
     import io
     from flask import current_app, render_template
+    from .title import extract_title
     from .images import fix_images
 
     config = current_app.config
 
     with io.open(config['filename'], 'r', encoding='utf-8') as mkdfile:
-        markdown = mkdfile.readlines()
+        markdown = mkdfile.read()
 
+    title = extract_title(markdown)
     markdown = fix_images(markdown, 'images/')
 
-    return render_template('slides.html', markdown=markdown)
+    return render_template('slides.html',
+                           title=title,
+                           markdown=markdown)
 
 
 @blueprint.route('/images/<path:path>')
