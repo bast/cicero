@@ -33,6 +33,7 @@ app.controller('Ctrl', ['$scope', '$http', function($scope, $http) {
         $scope.file = '';
         $scope.files = [];
         $scope.show_files = false;
+        $scope.no_files_found = false;
         reset_links();
     }
 
@@ -98,13 +99,22 @@ app.controller('Ctrl', ['$scope', '$http', function($scope, $http) {
                 .success(function(data2) {
                     $scope.files = [];
                     var _files = data2.tree;
+                    var num_markdown_files = 0;
                     for (var i = 0; i < _files.length; i++) {
                         if (_files[i].path.endsWith('.md') || _files[i].path.endsWith('.mkd'))
                         {
                             $scope.files.push(_files[i]);
+                            num_markdown_files += 1;
                         }
                     }
-                    $scope.show_files = true;
+                    if (num_markdown_files < 1)
+                    {
+                        $scope.no_files_found = true;
+                    }
+                    else
+                    {
+                        $scope.show_files = true;
+                    }
                 })
             })
     };
