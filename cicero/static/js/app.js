@@ -71,26 +71,24 @@ app.controller('Ctrl', ['$scope', '$http', function($scope, $http) {
     $scope.link_generated = false;
     $scope.generate_link = function () {
 
-        var s = 'http://cicero.xyz/v2/remark/github/';
-        s += $scope.user;
-        s += '/';
-        s += $scope.repo.name;
-        s += '/';
-        s += $scope.branch.name;
-        s += '/';
-        s += $scope.file.path;
-        s += '/';
-        $scope.link = s;
+        $scope.link = 'http://cicero.xyz/v2/remark/github/'
+                    + $scope.user
+                    + '/'
+                    + $scope.repo.name
+                    + '/'
+                    + $scope.branch.name
+                    + '/'
+                    + $scope.file.path
+                    + '/';
 
-        s = 'https://github.com/';
-        s += $scope.user;
-        s += '/';
-        s += $scope.repo.name;
-        s += '/blob/';
-        s += $scope.branch.name;
-        s += '/';
-        s += $scope.file.path;
-        $scope.source_link = s;
+        $scope.source_link = 'https://github.com/'
+                           + $scope.user
+                           + '/'
+                           + $scope.repo.name
+                           + '/blob/'
+                           + $scope.branch.name
+                           + '/'
+                           + $scope.file.path;
 
         $scope.link_generated = true;
     };
