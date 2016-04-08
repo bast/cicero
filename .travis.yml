@@ -15,7 +15,7 @@ install:
 script:
   - pep8 --ignore=E501 cicero.py
   - pep8 --ignore=E501 cicero
-  - py.test -vv cicero/images.py
+  - py.test cicero/*
 
 notifications:
   email: false
