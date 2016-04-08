@@ -1,3 +1,13 @@
+// we put all the js code into an anonymous function
+// this is good practice to isolate the namespace
+; (function() {
+
+
+// with this we make js less forgiving so that we catch
+// more hidden errors during development
+'use strict';
+
+
 var app = angular.module('app', []);
 
 app.config(['$interpolateProvider', function($interpolateProvider) {
@@ -84,3 +94,7 @@ app.controller('Ctrl', ['$scope', '$http', function($scope, $http) {
     };
 
 }]);
+
+
+// close the anonymous function
+})();
