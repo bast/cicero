@@ -5,7 +5,7 @@ blueprint = flask.Blueprint('git', __name__)
 
 @blueprint.route('/')
 def home():
-    return flask.render_template('index.html')
+    return flask.render_template('index.html', url_base='http://cicero.xyz')
 
 
 def render_github_markdown(namespace, repo, branch, file_name):

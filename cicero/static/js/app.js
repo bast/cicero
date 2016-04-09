@@ -121,7 +121,7 @@ app.controller('Ctrl', ['$scope', '$http', function($scope, $http) {
 
 
     $scope.generate_link = function () {
-        $scope.link = 'http://cicero.xyz/v2/remark/github/'
+        $scope.link = '/v2/remark/github/'
                     + $scope.user
                     + '/'
                     + $scope.repo.name
