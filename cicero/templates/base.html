@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
     <title>{% block page_title %}Cicero - Serving Great Presentations{% endblock %}</title>
 
     <!-- Bootstrap -->
@@ -25,14 +25,14 @@
         font-size: 16px;
       }
       input[type="text"], textarea {
-        background-color : #99eeff;
+        background-color: #99eeff;
       }
     </style>
 
   </head>
   <body ng-controller="Ctrl">
-{% block content %}
-{% endblock %}
+    {% block content %}
+    {% endblock %}
 
     <!-- jquery is needed for bootstrap's javascript plugins) -->
     <script src="{{ url_for('static', filename='js/vendor/jquery-1.12.0.js') }}"></script>
