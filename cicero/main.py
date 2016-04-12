@@ -26,6 +26,7 @@ def main():
         app.config['imagedir'] = os.path.dirname(args.filename)
         app.register_blueprint(preview.blueprint)
     else:
+        git.set_url_base(args.host, args.port)
         app.register_blueprint(git.blueprint)
 
     app.debug = args.debug

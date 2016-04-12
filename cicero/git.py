@@ -1,11 +1,22 @@
+import os
 import flask
 
 blueprint = flask.Blueprint('git', __name__)
 
+URL_BASE = 'URL_BASE_is_undefined'
+_url_base = os.environ.get('URL_BASE')
+if _url_base is not None:
+    URL_BASE = _url_base
+
+
+def set_url_base(host, port):
+    global URL_BASE
+    URL_BASE = 'http://{}:{}'.format(host, port)
+
 
 @blueprint.route('/')
 def home():
-    return flask.render_template('index.html', url_base='http://cicero.xyz')
+    return flask.render_template('index.html', url_base=URL_BASE)
 
 
 def render_github_markdown(namespace, repo, branch, file_name):

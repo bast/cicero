@@ -32,3 +32,8 @@ created by [Ole Petter Bang](https://github.com/gnab).
 ```
 /v2/remark/github/<namespace>/<repo>/<branch>/<file>/
 ```
+
+
+## Environment variables used
+
+`URL_BASE`: defines the URL base for generated links in the Markdown file finder
