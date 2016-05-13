@@ -18,7 +18,7 @@ def home():
     title = extract_title(markdown)
     markdown = fix_images(markdown, 'images/')
 
-    return render_template('slides.html',
+    return render_template('remark.html',
                            title=title,
                            markdown=markdown)
 
