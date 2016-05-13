@@ -1,4 +1,4 @@
-
+var hljs = remark.highlighter.engine;
 
 /*
 Language: remark markdown flavor
