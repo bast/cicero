@@ -6,7 +6,8 @@ blueprint = Blueprint('preview', __name__)
 @blueprint.route('/')
 def home():
     import io
-    from flask import current_app, render_template
+    import os
+    from flask import current_app, render_template, render_template_string
     from .title import extract_title
     from .images import fix_images
 
@@ -18,9 +19,19 @@ def home():
     title = extract_title(markdown)
     markdown = fix_images(markdown, 'images/')
 
-    return render_template('remark.html',
-                           title=title,
-                           markdown=markdown)
+    mkd_path = os.path.dirname(os.path.realpath(config['filename']))
+    own_template_file = os.path.join(mkd_path, 'remark.html')
+    if os.path.isfile(own_template_file):
+        # own template file exists, we use it instead the default one
+        fd = blueprint.open_resource(own_template_file)
+        return render_template_string(fd.read().decode("utf-8"),
+                                      title=title,
+                                      markdown=markdown)
+    else:
+        # default template
+        return render_template('remark.html',
+                               title=title,
+                               markdown=markdown)
 
 
 @blueprint.route('/images/<path:path>')
