@@ -23,7 +23,7 @@
           </div>
 
           <div class="form-group">
-            <div ng-show="show_repos">
+            <div ng-show="show_repos" ng-cloak>
               <h4>Select repository:</h4>
               <select class="form-control" ng-model="repo"
                       ng-change="load_branches()" ng-options="item.name for item in repos">
@@ -32,7 +32,7 @@
           </div>
 
           <div class="form-group">
-            <div ng-show="show_branches">
+            <div ng-show="show_branches" ng-cloak>
               <h4>Select branch:</h4>
               <select class="form-control" ng-model="branch"
                       ng-change="load_files()" ng-options="item.name for item in branches">
@@ -41,7 +41,7 @@
           </div>
 
           <div class="form-group">
-            <div ng-show="show_files">
+            <div ng-show="show_files" ng-cloak>
               <h4>Select Markdown file to render:</h4>
               <select class="form-control" ng-model="file"
                       ng-change="generate_link()" ng-options="item.path for item in files">
@@ -52,7 +52,7 @@
       </div>
     </div>
 
-    <div ng-show="show_links">
+    <div ng-show="show_links" ng-cloak>
       <div class="row">
         <h3><b>Share this link with your friends</b></h3>
         <b><a target="_blank" href="{[ link ]}">{{ url_base }}{[ link ]}</a></b>
@@ -65,7 +65,7 @@
       </div>
     </div>
 
-    <div ng-show="no_files_found">
+    <div ng-show="no_files_found" ng-cloak>
       <div class="row">
         <div class="panel panel-danger">
           <div class="panel-heading">
