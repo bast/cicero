@@ -3,8 +3,8 @@ import flask
 
 blueprint = flask.Blueprint('git', __name__)
 
-URL_BASE = 'URL_BASE_is_undefined'
-_url_base = os.environ.get('URL_BASE')
+URL_BASE = 'CICERO_URL_BASE_is_undefined'
+_url_base = os.environ.get('CICERO_URL_BASE')
 if _url_base is not None:
     URL_BASE = _url_base
 

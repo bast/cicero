@@ -36,4 +36,4 @@ created by [Ole Petter Bang](https://github.com/gnab).
 
 ## Environment variables used
 
-`URL_BASE`: defines the URL base for generated links in the Markdown file finder
+`CICERO_URL_BASE`: defines the URL base for generated links in the Markdown file finder
