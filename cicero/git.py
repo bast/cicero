@@ -42,6 +42,9 @@ def render_github_markdown(namespace, repo, branch, file_name):
             prefix = 'https://cdn.rawgit.com/{}/{}/{}/'.format(namespace, repo, branch)
 
         title = extract_title(markdown)
+        style = flask.request.args.get('style')
+        if style is None:
+            style = 'default'
 
         try:
             url = 'https://raw.githubusercontent.com/{}/{}/{}/{}'.format(namespace, repo, branch, 'remark.html')
@@ -49,11 +52,13 @@ def render_github_markdown(namespace, repo, branch, file_name):
             template = response.read().decode("utf-8")
             return flask.render_template_string(template,
                                                 title=title,
-                                                markdown=fix_images(markdown, prefix))
+                                                markdown=fix_images(markdown, prefix),
+                                                style=style)
         except IOError:
             return flask.render_template('remark.html',
                                          title=title,
-                                         markdown=fix_images(markdown, prefix))
+                                         markdown=fix_images(markdown, prefix),
+                                         style=style)
     except IOError:
         return flask.render_template('404.html')
 

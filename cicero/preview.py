@@ -7,7 +7,7 @@ blueprint = Blueprint('preview', __name__)
 def home():
     import io
     import os
-    from flask import current_app, render_template, render_template_string
+    from flask import current_app, render_template, render_template_string, request
     from .title import extract_title
     from .images import fix_images
 
@@ -19,6 +19,10 @@ def home():
     title = extract_title(markdown)
     markdown = fix_images(markdown, 'images/')
 
+    style = request.args.get('style')
+    if style is None:
+        style = 'default'
+
     mkd_path = os.path.dirname(os.path.realpath(config['filename']))
     own_template_file = os.path.join(mkd_path, 'remark.html')
     if os.path.isfile(own_template_file):
@@ -26,12 +30,14 @@ def home():
         fd = blueprint.open_resource(own_template_file)
         return render_template_string(fd.read().decode("utf-8"),
                                       title=title,
-                                      markdown=markdown)
+                                      markdown=markdown,
+                                      style=style)
     else:
         # default template
         return render_template('remark.html',
                                title=title,
-                               markdown=markdown)
+                               markdown=markdown,
+                               style=style)
 
 
 @blueprint.route('/images/<path:path>')
