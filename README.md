@@ -51,9 +51,9 @@ that you have full liberty to employ own CSS and JavaScript.
 
 ## Styles
 
-The default style is "default". You can change it on the fly:
+The default style is "default". You can change it on the fly using `?style`:
 ```
-?style=monokai
+http://cicero.xyz/v2/remark/github/<namespace>/<repo>/<branch>/<talk>/?style=monokai
 ```
 
 Supported styles:
