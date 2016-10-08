@@ -3,7 +3,7 @@ def extract_title(markdown):
         if '#' in line:
             index_first_non_whitespace = len(line) - len(line.lstrip())
             index_first_hash = line.index('#')
-            first_alpha = list(filter(str.isalpha, line))[0]
+            first_alpha = list(filter(str.isalpha, str(line)))[0]
             index_first_alpha = line.index(first_alpha)
             if index_first_non_whitespace == index_first_hash:
                 return line[index_first_alpha:]
