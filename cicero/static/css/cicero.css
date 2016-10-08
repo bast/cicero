@@ -105,6 +105,21 @@ code {
   padding-top: 1em;
 }
 
+/* Two-column layout with different splits */
+.column:first-of-type {float:left}
+.column:last-of-type {float:right}
+
+.split-30 .column:first-of-type {width: 30%}
+.split-30 .column:last-of-type {width: 70%}
+.split-40 .column:first-of-type {width: 40%}
+.split-40 .column:last-of-type {width: 60%}
+.split-50 .column:first-of-type {width: 50%}
+.split-50 .column:last-of-type {width: 50%}
+.split-60 .column:first-of-type {width: 60%}
+.split-60 .column:last-of-type {width: 40%}
+.split-70 .column:first-of-type {width: 70%}
+.split-70 .column:last-of-type {width: 30%}
+
 /* Some special classes */
 .title {font-size: 3.3em; color:#606060;font-weight:bold;letter-spacing:0.05em}
 .subtitle {font-size: 1.4em}
@@ -115,3 +130,13 @@ code {
 
 .cite {font-size: 0.8em; color:#33AA99;font-style: italic}
 .strike {color:salmon;text-decoration:line-through}
+
+/* Images overlay */
+.imageWrapper {
+  position: relative;
+}
+.overlayImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
