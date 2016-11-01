@@ -15,6 +15,7 @@ def parse_args():
 
 def main():
     import os
+    import sys
     from .app import app
     from . import git
     from . import preview
@@ -22,6 +23,11 @@ def main():
     args = parse_args()
 
     if args.filename:
+
+        if not os.path.isfile(args.filename):
+            sys.stderr.write('ERROR: file {0} not found\n'.format(args.filename))
+            sys.exit(1)
+
         app.config['filename'] = args.filename
         app.config['imagedir'] = os.path.dirname(args.filename)
         app.register_blueprint(preview.blueprint)
