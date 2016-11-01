@@ -109,16 +109,16 @@ code {
 .column:first-of-type {float:left}
 .column:last-of-type {float:right}
 
-.split-30 .column:first-of-type {width: 30%}
-.split-30 .column:last-of-type {width: 70%}
-.split-40 .column:first-of-type {width: 40%}
-.split-40 .column:last-of-type {width: 60%}
-.split-50 .column:first-of-type {width: 50%}
-.split-50 .column:last-of-type {width: 50%}
-.split-60 .column:first-of-type {width: 60%}
-.split-60 .column:last-of-type {width: 40%}
-.split-70 .column:first-of-type {width: 70%}
-.split-70 .column:last-of-type {width: 30%}
+.split-30-70 .column:first-of-type {width: 30%}
+.split-30-70 .column:last-of-type {width: 70%}
+.split-40-60 .column:first-of-type {width: 40%}
+.split-40-60 .column:last-of-type {width: 60%}
+.split-50-50 .column:first-of-type {width: 50%}
+.split-50-50 .column:last-of-type {width: 50%}
+.split-60-40 .column:first-of-type {width: 60%}
+.split-60-40 .column:last-of-type {width: 40%}
+.split-70-30 .column:first-of-type {width: 70%}
+.split-70-30 .column:last-of-type {width: 30%}
 
 /* Some special classes */
 .title {font-size: 3.3em; color:#606060;font-weight:bold;letter-spacing:0.05em}
