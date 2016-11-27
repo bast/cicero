@@ -3,7 +3,7 @@
 v2
 ==
 
-Supports files in subdirectories.
+Supports serving Markdown files in subdirectories of the repository.
 
 ::
 
@@ -14,7 +14,7 @@ v1
 ==
 
 This API is deprecated but supported.
-Does not support files in subdirectories.
+Does not support serving Markdown files in subdirectories of the repository.
 
 ::
 
