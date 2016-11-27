@@ -14,7 +14,7 @@ First install the dependencies (you need a network connection for this step)::
 
 Then start the server::
 
-  $ python cicero.py --file /home/bast/tmp/talk-intro/talk.md
+  $ python cicero.py
 
   * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
 
