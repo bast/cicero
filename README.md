@@ -20,4 +20,4 @@ created by [Ole Petter Bang](https://github.com/gnab).
 
 - [Radovan Bast](http://bast.fr) (idea, pilot implementation, and plumbing)
 - [Ole Martin Bjørndalen](https://github.com/olemb) (local preview and Blueprint solution)
-- [Roberto Di Remigio](http://totaltrash.xyz) (MathJax support and local templating idea)
+- [Roberto Di Remigio](http://totaltrash.xyz) (MathJax support, local templating idea, slide splits)
