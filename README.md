@@ -34,37 +34,3 @@ file which contains your slides. If such a file exists, it will be used instead
 of the [default template](../master/cicero/templates/remark.html). Make sure to
 use the variables "title", "markdown", and "style" in your custom template. Apart from
 that you have full liberty to employ own CSS and JavaScript.
-
-
-## Styles
-
-The default style is "default". You can change it on the fly using `?style`:
-```
-http://cicero.xyz/v2/remark/github/<namespace>/<repo>/<branch>/<talk>/?style=monokai
-```
-
-Supported styles:
-```
-arta
-ascetic
-dark
-default
-far
-github
-googlecode
-idea
-ir_black
-magula
-monokai
-rainbow
-solarized-dark
-solarized-light
-sunburst
-tomorrow
-tomorrow-night-blue
-tomorrow-night-bright
-tomorrow-night
-tomorrow-night-eighties
-vs
-zenburn
-```
