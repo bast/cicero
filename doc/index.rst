@@ -23,3 +23,10 @@ Cicero: Serving slides written in Markdown
    :caption: API
 
    api.rst
+
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Maintaining a server
+
+   server.rst

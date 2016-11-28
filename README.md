@@ -12,15 +12,10 @@ created by [Ole Petter Bang](https://github.com/gnab).
 
 ## Documentation
 
-- http://cicero.readthedocs.io/
+- http://cicero.readthedocs.io
 
 
 ## Contributors
 
 - [Ole Martin Bjørndalen](https://github.com/olemb) (local preview and Blueprint solution)
 - [Roberto Di Remigio](https://github.com/robertodr) (MathJax support)
-
-
-## Environment variables
-
-`CICERO_URL_BASE`: defines the URL base for generated links in the Markdown file finder
