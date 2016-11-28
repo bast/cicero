@@ -22,7 +22,7 @@ Then start the server::
 Serving local files
 ===================
 
-It is no problem to serve local files to see the result before you push them
-to the repository::
+Using a local server it is also no problem to serve local files to see the
+result before you push them to the repository::
 
   $ python cicero.py --file /home/user/my-talk/talk.md
