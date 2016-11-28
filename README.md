@@ -24,13 +24,3 @@ created by [Ole Petter Bang](https://github.com/gnab).
 ## Environment variables
 
 `CICERO_URL_BASE`: defines the URL base for generated links in the Markdown file finder
-
-
-## Template customization
-
-It is possible to use your own template for customization and branding.  For
-this place a file called "remark.html" in the same location as the Markdown
-file which contains your slides. If such a file exists, it will be used instead
-of the [default template](../master/cicero/templates/remark.html). Make sure to
-use the variables "title", "markdown", and "style" in your custom template. Apart from
-that you have full liberty to employ own CSS and JavaScript.

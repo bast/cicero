@@ -15,6 +15,7 @@ Cicero: Serving slides written in Markdown
    :caption: Styling
 
    highlighting.rst
+   templating.rst
 
 
 .. toctree::
