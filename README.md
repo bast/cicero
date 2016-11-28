@@ -16,7 +16,8 @@ created by [Ole Petter Bang](https://github.com/gnab).
 - http://cicero.readthedocs.io
 
 
-## Contributors
+## Authors
 
+- [Radovan Bast](http://bast.fr) (idea, pilot implementation, and plumbing)
 - [Ole Martin Bjørndalen](https://github.com/olemb) (local preview and Blueprint solution)
-- [Roberto Di Remigio](https://github.com/robertodr) (MathJax support)
+- [Roberto Di Remigio](http://totaltrash.xyz) (MathJax support and local templating idea)
