@@ -11,6 +11,7 @@ MathJax.Hub.Config({
       scale: 90
     }
 });
+
 MathJax.Hub.Queue(function() {
     $(MathJax.Hub.getAllJax()).map(function(index, elem) {
         return(elem.SourceElement());
