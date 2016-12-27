@@ -9,10 +9,9 @@
           type="image/png"
           href="{{ url_for('static', filename='icon.png') }}" />
 
-    <title>{% block page_title %}Cicero - Serving Great Presentations{% endblock %}</title>
+    <title>{% block page_title %}Cicero - Serving slides written in Markdown{% endblock %}</title>
 
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/vendor/bootstrap-3.3.6.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/vendor/bootstrap-3.3.7.min.css') }}">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -45,10 +44,9 @@
     {% block content %}
     {% endblock %}
 
-    <!-- jquery is needed for bootstrap's javascript plugins) -->
-    <script src="{{ url_for('static', filename='js/vendor/jquery-1.12.0.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/vendor/bootstrap-3.3.6.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/vendor/angular-1.5.3.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/vendor/jquery-1.12.3.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/vendor/bootstrap-3.3.7.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/vendor/angular-1.5.9.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/cicero.js') }}"></script>
 
   </body>

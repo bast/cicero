@@ -1,6 +1,8 @@
 MathJax.Hub.Config({
     tex2jax: {
-      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      processEscapes: true
     },
     "TeX": {
       Macros: {AA : "{\\unicode{x212B}}"}
@@ -9,6 +11,7 @@ MathJax.Hub.Config({
       scale: 90
     }
 });
+
 MathJax.Hub.Queue(function() {
     $(MathJax.Hub.getAllJax()).map(function(index, elem) {
         return(elem.SourceElement());
