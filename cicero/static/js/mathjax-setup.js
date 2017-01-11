@@ -5,7 +5,8 @@ MathJax.Hub.Config({
       processEscapes: true
     },
     "TeX": {
-      Macros: {AA : "{\\unicode{x212B}}"}
+      Macros: {AA : "{\\unicode{x212B}}"},
+      extensions: ["autoload-all.js"]
     },
     "HTML-CSS": {
       scale: 90
