@@ -19,4 +19,11 @@ MathJax.Hub.Queue(function() {
     }).parent().addClass('has-jax');
 });
 
+MathJax.Hub.Register.StartupHook("TeX autoload-all Ready", function () {
+  var MACROS = MathJax.InputJax.TeX.Definitions.macros;
+  MACROS.color = "Color";
+  delete MACROS.colorbox;
+  delete MACROS.fcolorbox;
+});
+
 MathJax.Hub.Configured();
