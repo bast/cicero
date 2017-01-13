@@ -16,6 +16,7 @@ h1, h2, h3 {
 li p { line-height: 1.25em; }
 .red { color: #fa0000; }
 .blue { color: #0000ff; }
+.gray { color: #7f7f7f; }
 .large { font-size: 2em; }
 a, a > code {
   color: rgb(249, 38, 114);
