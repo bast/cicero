@@ -132,6 +132,12 @@ code {
 
 .cite {font-size: 0.8em; color:#33AA99;font-style: italic}
 .strike {color:salmon;text-decoration:line-through}
+.footnote-cite {
+  position: absolute;
+  bottom: 3em;
+  color: #7f7f7f;
+  font-size: 0.8em;
+}
 
 /* Images overlay */
 .imageWrapper {
