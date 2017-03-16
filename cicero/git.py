@@ -48,8 +48,25 @@ def render_github_markdown(path):
     from .title import extract_title
     from .images import fix_images
 
+    (owner, repo, _ref) = path.split('/')[0:3]
+    file_path = '/'.join(path.split('/')[3:])
+
+    # we need to translate the reference to a sha (the reference can be a sha)
+    # the reason for this is that cdn.rawgit.com caches files forever
+    # the reference may change but the sha won't
+    sha = get_sha_github(owner, repo, _ref)
+
+    root = '{0}/{1}/{2}/'.format(owner, repo, sha)
+    if '/' in file_path:
+        root += '/'.join(file_path.split('/')[:-1]) + '/'
+        last_file = file_path.split('/')[-1]
+    else:
+        last_file = file_path
+
+    prefix = 'https://cdn.rawgit.com/{0}'.format(root)
+
     try:
-        url = 'https://raw.githubusercontent.com/{}'.format(path)
+        url = prefix + '/' + last_file
 
         response = _urlopen(url)
 
@@ -57,19 +74,13 @@ def render_github_markdown(path):
         if markdown == 'Not Found':
             return flask.render_template('404.html')
 
-        # we do not use https://raw.githubusercontent.com because it does not handle svg files
-
-        # we define root as everything except the last file
-        root = '/'.join(path.split('/')[:-1])
-        prefix = 'https://cdn.rawgit.com/{}/'.format(root)
-
         title = extract_title(markdown)
         style = flask.request.args.get('style')
         if style is None:
             style = 'default'
 
         try:
-            url = 'https://raw.githubusercontent.com/{}/{}'.format(root, 'remark.html')
+            url = prefix + '/' + 'remark.html'
             response = _urlopen(url)
             template = response.read().decode("utf-8")
             return flask.render_template_string(template,
