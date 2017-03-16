@@ -48,22 +48,27 @@ def render_github_markdown(path):
     from .title import extract_title
     from .images import fix_images
 
-    (owner, repo, _ref) = path.split('/')[0:3]
-    file_path = '/'.join(path.split('/')[3:])
-
-    # we need to translate the reference to a sha (the reference can be a sha)
-    # the reason for this is that cdn.rawgit.com caches files forever
-    # the reference may change but the sha won't
-    sha = get_sha_github(owner, repo, _ref)
-
-    root = '{0}/{1}/{2}/'.format(owner, repo, sha)
+    (service, owner, repo, ref) = path.split('/')[0:4]
+    file_path = '/'.join(path.split('/')[4:])
     if '/' in file_path:
-        root += '/'.join(file_path.split('/')[:-1]) + '/'
         last_file = file_path.split('/')[-1]
     else:
         last_file = file_path
 
-    prefix = 'https://cdn.rawgit.com/{0}'.format(root)
+    if service == 'github.com':
+        # we need to translate the reference to a sha (the reference can be a sha)
+        # the reason for this is that cdn.rawgit.com caches files forever
+        # the reference may change but the sha won't
+        sha = get_sha_github(owner, repo, ref)
+
+        root = '{0}/{1}/{2}'.format(owner, repo, sha)
+        if '/' in file_path:
+            root += '/'.join(file_path.split('/')[:-1]) + '/'
+
+        prefix = 'https://cdn.rawgit.com/{0}'.format(root)
+    else:
+        # FIXME currently fails, expects session token i think
+        prefix = 'https://{0}/{1}/{2}/raw/{3}'.format(service, owner, repo, ref)
 
     try:
         url = prefix + '/' + last_file
@@ -98,9 +103,14 @@ def render_github_markdown(path):
 
 @blueprint.route('/v1/github/<path:path>/remark/')
 def render_v1(path):
-    return render_github_markdown(path)
+    return render_github_markdown('github.com' + '/' + path)
 
 
 @blueprint.route('/v2/remark/github/<path:path>/')
 def render_v2(path):
+    return render_github_markdown('github.com' + '/' + path)
+
+
+@blueprint.route('/v3/remark/<path:path>/')
+def render_v3(path):
     return render_github_markdown(path)
