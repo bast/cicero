@@ -1,5 +1,6 @@
 import os
 import flask
+import sys
 
 blueprint = flask.Blueprint('git', __name__)
 
@@ -20,14 +21,21 @@ def home():
 
 
 def render_github_markdown(namespace, repo, branch, file_name):
-    from urllib import request
     from .title import extract_title
     from .images import fix_images
+
+    if sys.version_info[0] > 2:
+        from urllib import request
+    else:
+        import urllib2
 
     try:
         url = 'https://raw.githubusercontent.com/{}/{}/{}/{}'.format(namespace, repo, branch, file_name)
 
-        response = request.urlopen(url)
+        if sys.version_info[0] > 2:
+            response = request.urlopen(url)
+        else:
+            response = urllib2.urlopen(url)
 
         markdown = response.read().decode("utf-8")
         if markdown == 'Not Found':
@@ -48,7 +56,10 @@ def render_github_markdown(namespace, repo, branch, file_name):
 
         try:
             url = 'https://raw.githubusercontent.com/{}/{}/{}/{}'.format(namespace, repo, branch, 'remark.html')
-            response = request.urlopen(url)
+            if sys.version_info[0] > 2:
+                response = request.urlopen(url)
+            else:
+                response = urllib2.urlopen(url)
             template = response.read().decode("utf-8")
             return flask.render_template_string(template,
                                                 title=title,
