@@ -1,6 +1,8 @@
 import os
 import flask
 import sys
+import requests
+import json
 
 if sys.version_info[0] > 2:
     from urllib import request
@@ -15,6 +17,21 @@ URL_BASE = 'CICERO_URL_BASE_is_undefined'
 _url_base = os.environ.get('CICERO_URL_BASE')
 if _url_base is not None:
     URL_BASE = _url_base
+
+
+def get_sha_github(owner, repo, ref):
+    uri = 'https://api.github.com/repos/{0}/{1}/commits/{2}'.format(owner, repo, ref)
+    try:
+        response = requests.get(uri)
+    except requests.ConnectionError:
+        return "Connection Error"
+    data = json.loads(response.text)
+    return data['sha']
+
+
+def test_get_sha_github():
+    sha = get_sha_github('bast', 'cicero', 'bfa3748447')
+    assert sha == 'bfa3748447fe0c7455f19a027575406a0c561a4f'
 
 
 def set_url_base(host, port):
