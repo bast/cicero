@@ -65,10 +65,10 @@ def render_github_markdown(path):
         if '/' in file_path:
             root += '/'.join(file_path.split('/')[:-1]) + '/'
 
-        prefix = 'https://cdn.rawgit.com/{0}'.format(root)
+        prefix = 'https://cdn.rawgit.com/{0}/'.format(root)
     else:
         # FIXME currently fails, expects session token i think
-        prefix = 'https://{0}/{1}/{2}/raw/{3}'.format(service, owner, repo, ref)
+        prefix = 'https://{0}/{1}/{2}/raw/{3}/'.format(service, owner, repo, ref)
 
     try:
         url = prefix + '/' + last_file
