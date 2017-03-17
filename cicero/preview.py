@@ -23,21 +23,22 @@ def home():
     if style is None:
         style = 'default'
 
-    mkd_path = os.path.dirname(os.path.realpath(config['filename']))
-    own_template_file = os.path.join(mkd_path, 'remark.html')
-    if os.path.isfile(own_template_file):
-        # own template file exists, we use it instead the default one
-        fd = blueprint.open_resource(own_template_file)
-        return render_template_string(fd.read().decode("utf-8"),
-                                      title=title,
-                                      markdown=markdown,
-                                      style=style)
-    else:
-        # default template
-        return render_template('remark.html',
-                               title=title,
-                               markdown=markdown,
-                               style=style)
+#   mkd_path = os.path.dirname(os.path.realpath(config['filename']))
+#   own_template_file = os.path.join(mkd_path, 'remark.html')
+#   if os.path.isfile(own_template_file):
+#       # own template file exists, we use it instead the default one
+#       fd = blueprint.open_resource(own_template_file)
+#       return render_template_string(fd.read().decode("utf-8"),
+#                                     title=title,
+#                                     markdown=markdown,
+#                                     style=style)
+#   else:
+#       # default template
+    return render_template('remark.html',
+                           title=title,
+                           markdown=markdown,
+                           style=style,
+                           engine='remark-0.13.0')  # FIXME hardcoded
 
 
 @blueprint.route('/images/<path:path>')
