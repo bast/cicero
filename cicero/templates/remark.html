@@ -1,17 +1,19 @@
 <!doctype html>
 <html>
-  <head>
+<head>
     <meta charset="utf-8" />
-    <meta name="keywords" content="cicero,markdown,slideshow,presentation" />
-    <meta name="description" content="cicero.xyz: serving slides written in markdown." />
+    <meta name="keywords"
+          content="cicero,markdown,slideshow,presentation" />
+    <meta name="description"
+          content="cicero.xyz: serving slides written in markdown." />
     <link rel="icon"
           type="image/png"
-	  href="{{ url_for('static', filename='icon.png') }}" />
+          href="{{ url_for('static', filename='icon.png') }}" />
     <title>{{ title }}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/fonts.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/cicero.css') }}">
-  </head>
-  <body>
+</head>
+<body>
     <textarea id="source">
 {{ markdown }}
     </textarea>
@@ -20,16 +22,19 @@
     <script src="{{ url_for('static', filename='js/highlighter.js') }}" type="text/javascript"></script>
 
     <script type="text/javascript">
-      var slideshow = remark.create({
-          highlightStyle: '{{ style }}',
-          highlightLanguage: 'remark',
-          highlightLines: true
-        }) ;
+        var slideshow = remark.create({
+            highlightStyle: '{{ style }}',
+            highlightLanguage: 'remark',
+            highlightLines: true
+          }) ;
     </script>
 
     <!-- for offline mathjax see http://stackoverflow.com/a/19209462 -->
-    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML&delayStartupUntil=configured" type="text/javascript"></script>
-    <script src="{{ url_for('static', filename='js/mathjax-setup.js') }}" type="text/javascript"></script>
-
-  </body>
+    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML&delayStartupUntil=configured"
+            type="text/javascript">
+    </script>
+    <script src="{{ url_for('static', filename='js/mathjax-setup.js') }}"
+            type="text/javascript">
+    </script>
+</body>
 </html>
