@@ -11,15 +11,15 @@
           href="{{ url_for('static', filename='icon.png') }}" />
     <title>{{ title }}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/fonts.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/cicero.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/cicero-custom.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='engines/' + engine + '/vendor.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='engines/' + engine + '/custom.css') }}">
 </head>
 <body>
     <textarea id="source">
 {{ markdown }}
     </textarea>
 
-    <script src="{{ url_for('static', filename='js/vendor/' + engine + '.min.js') }}" type="text/javascript"></script>
+    <script src="{{ url_for('static', filename='engines/' + engine + '/vendor.min.js') }}" type="text/javascript"></script>
     <script src="{{ url_for('static', filename='js/highlighter.js') }}" type="text/javascript"></script>
 
     <script type="text/javascript">
