@@ -44,7 +44,7 @@ def home():
     return flask.render_template('index.html', url_base=URL_BASE)
 
 
-def render_github_markdown(path):
+def render_github_markdown(path, engine, engine_version):
     from .title import extract_title
     from .images import fix_images
 
@@ -84,33 +84,35 @@ def render_github_markdown(path):
         if style is None:
             style = 'default'
 
-        try:
-            url = prefix + '/' + 'remark.html'
-            response = _urlopen(url)
-            template = response.read().decode("utf-8")
-            return flask.render_template_string(template,
-                                                title=title,
-                                                markdown=fix_images(markdown, prefix),
-                                                style=style)
-        except IOError:
-            return flask.render_template('remark.html',
-                                         title=title,
-                                         markdown=fix_images(markdown, prefix),
-                                         style=style)
+      # FIXME
+      # try:
+      #     url = prefix + '/' + 'remark.html'
+      #     response = _urlopen(url)
+      #     template = response.read().decode("utf-8")
+      #     return flask.render_template_string(template,
+      #                                         title=title,
+      #                                         markdown=fix_images(markdown, prefix),
+      #                                         style=style)
+      # except IOError:
+        return flask.render_template('remark.html',
+                                     title=title,
+                                     markdown=fix_images(markdown, prefix),
+                                     style=style,
+                                     engine='{0}-{1}'.format(engine, engine_version))
     except IOError:
         return flask.render_template('404.html')
 
 
 @blueprint.route('/v1/github/<path:path>/remark/')
 def render_v1(path):
-    return render_github_markdown('github.com' + '/' + path)
+    return render_github_markdown('github.com' + '/' + path, 'remark', '0.13.0')
 
 
 @blueprint.route('/v2/remark/github/<path:path>/')
 def render_v2(path):
-    return render_github_markdown('github.com' + '/' + path)
+    return render_github_markdown('github.com' + '/' + path, 'remark', '0.13.0')
 
 
-@blueprint.route('/v3/remark/<path:path>/')
-def render_v3(path):
-    return render_github_markdown(path)
+@blueprint.route('/v3/<string:engine>/<string:engine_version>/<path:path>/')
+def render_v3(path, engine, engine_version):
+    return render_github_markdown(path, engine, engine_version)
