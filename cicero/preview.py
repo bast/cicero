@@ -38,7 +38,7 @@ def home():
                            title=title,
                            markdown=markdown,
                            style=style,
-                           engine='remark-0.13.0')  # FIXME hardcoded
+                           engine=config['engine'])
 
 
 @blueprint.route('/images/<path:path>')

@@ -16,6 +16,7 @@ def main():
             sys.exit(1)
 
         app.config['filename'] = args.filename
+        app.config['engine'] = args.engine
         app.config['imagedir'] = os.path.dirname(args.filename)
         app.register_blueprint(preview.blueprint)
     else:
