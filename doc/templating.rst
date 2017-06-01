@@ -3,6 +3,8 @@
 Template customization
 ======================
 
+This text is outdated and incorrect:
+
 It is possible to use your own template for customization and branding.  For
 this place a file called "remark.html" in the same location as the Markdown
 file which contains your slides. If such a file exists, it will be used instead

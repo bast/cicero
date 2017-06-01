@@ -34,7 +34,7 @@ def home():
 #                                     style=style)
 #   else:
 #       # default template
-    return render_template('remark.html',
+    return render_template('render.html',
                            title=title,
                            markdown=markdown,
                            style=style,

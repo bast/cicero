@@ -94,7 +94,7 @@ def render_github_markdown(path, engine, engine_version):
       #                                         markdown=fix_images(markdown, prefix),
       #                                         style=style)
       # except IOError:
-        return flask.render_template('remark.html',
+        return flask.render_template('render.html',
                                      title=title,
                                      markdown=fix_images(markdown, prefix),
                                      style=style,
