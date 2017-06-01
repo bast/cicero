@@ -1,25 +1,12 @@
-def parse_args():
-    from argparse import ArgumentParser
-    import os
-
-    parser = ArgumentParser()
-    arg = parser.add_argument
-
-    arg('--file', '-f', dest='filename', help='serve a local file')
-    arg('--debug', dest='debug', action='store_true', default=False)
-    arg('--host', dest='host', default=os.environ.get('HOST', '0.0.0.0'))
-    arg('--port', dest='port', type=int, default=int(os.environ.get('PORT', 5000)))
-
-    return parser.parse_args()
+import os
+import sys
+from .app import app
+from . import git
+from . import preview
+from .cli import parse_args
 
 
 def main():
-    import os
-    import sys
-    from .app import app
-    from . import git
-    from . import preview
-
     args = parse_args()
 
     if args.filename:
