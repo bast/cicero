@@ -2,3 +2,5 @@ flask == 0.10.1
 pep8
 pytest
 requests
+sphinx
+sphinx_rtd_theme
