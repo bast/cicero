@@ -11,7 +11,7 @@
 
     <title>{% block page_title %}Cicero - Serving slides written in Markdown{% endblock %}</title>
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-3.3.7.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap-3.3.7.min.css') }}">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -44,8 +44,9 @@
     {% block content %}
     {% endblock %}
 
-    <script src="{{ url_for('static', filename='js/vendor/jquery-1.12.3.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/vendor/bootstrap-3.3.7.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='bootstrap/js/jquery-1.12.3.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='bootstrap/js/bootstrap-3.3.7.min.js') }}"></script>
+
     <script src="{{ url_for('static', filename='js/vendor/angular-1.5.9.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/cicero.js') }}"></script>
 
