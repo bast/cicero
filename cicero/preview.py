@@ -23,21 +23,18 @@ def home():
     if style is None:
         style = 'default'
 
-#   mkd_path = os.path.dirname(os.path.realpath(config['filename']))
-#   own_template_file = os.path.join(mkd_path, 'remark.html')
-#   if os.path.isfile(own_template_file):
-#       # own template file exists, we use it instead the default one
-#       fd = blueprint.open_resource(own_template_file)
-#       return render_template_string(fd.read().decode("utf-8"),
-#                                     title=title,
-#                                     markdown=markdown,
-#                                     style=style)
-#   else:
-#       # default template
+    talk_no_suffix, _suffix = os.path.splitext(config['filename'])
+    own_css_file = talk_no_suffix + '.css'
+    own_css = ''  # by default no own css
+    if os.path.isfile(own_css_file):
+        with io.open(own_css_file, 'r') as css_file:
+            own_css = css_file.read()
+
     return render_template('render.html',
                            title=title,
                            markdown=markdown,
                            style=style,
+                           own_css=own_css,
                            engine=config['engine'])
 
 
