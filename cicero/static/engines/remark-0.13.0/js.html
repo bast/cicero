@@ -1,0 +1,42 @@
+<script type="text/javascript">
+    var slideshow = remark.create({
+        highlightStyle: '{{ style }}',
+        highlightLines: true
+      }) ;
+</script>
+
+<!-- for offline mathjax see http://stackoverflow.com/a/19209462 -->
+<script src="http://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML&delayStartupUntil=configured" type="text/javascript">
+</script>
+
+<script type="text/javascript">
+    MathJax.Hub.Config({
+        tex2jax: {
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+          inlineMath: [['$','$'], ['\\(','\\)']],
+          processEscapes: true
+        },
+        "TeX": {
+          Macros: {AA : "{\\unicode{x212B}}"},
+          extensions: ["autoload-all.js"]
+        },
+        "HTML-CSS": {
+          scale: 90
+        }
+    });
+
+    MathJax.Hub.Queue(function() {
+        $(MathJax.Hub.getAllJax()).map(function(index, elem) {
+            return(elem.SourceElement());
+        }).parent().addClass('has-jax');
+    });
+
+    MathJax.Hub.Register.StartupHook("TeX autoload-all Ready", function () {
+      var MACROS = MathJax.InputJax.TeX.Definitions.macros;
+      MACROS.color = "Color";
+      delete MACROS.colorbox;
+      delete MACROS.fcolorbox;
+    });
+
+    MathJax.Hub.Configured();
+</script>
