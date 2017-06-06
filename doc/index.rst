@@ -15,6 +15,7 @@ Cicero: Serving slides written in Markdown
    :caption: Styling your remark slides
 
    remark/custom.rst
+   remark/images.rst
    remark/background.rst
    remark/math.rst
    remark/highlighting.rst
