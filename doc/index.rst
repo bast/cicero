@@ -14,6 +14,7 @@ Cicero: Serving slides written in Markdown
    :maxdepth: 1
    :caption: Styling your remark slides
 
+   remark/custom.rst
    remark/background.rst
    remark/math.rst
    remark/highlighting.rst
