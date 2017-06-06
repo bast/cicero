@@ -63,7 +63,7 @@ def render_github_markdown(path, engine, engine_version):
 
         root = '{0}/{1}/{2}'.format(owner, repo, sha)
         if '/' in file_path:
-            root += '/'.join(file_path.split('/')[:-1]) + '/'
+            root += '/' + '/'.join(file_path.split('/')[:-1]) + '/'
 
         prefix = 'https://cdn.rawgit.com/{0}/'.format(root)
     else:
@@ -84,20 +84,21 @@ def render_github_markdown(path, engine, engine_version):
         if style is None:
             style = 'default'
 
-      # FIXME
-      # try:
-      #     url = prefix + '/' + 'remark.html'
-      #     response = _urlopen(url)
-      #     template = response.read().decode("utf-8")
-      #     return flask.render_template_string(template,
-      #                                         title=title,
-      #                                         markdown=fix_images(markdown, prefix),
-      #                                         style=style)
-      # except IOError:
+        # if own css is available, we load it
+        # if not, we default to empty own css
+        try:
+            file_without_suffix, _suffix = os.path.splitext(last_file)
+            url = prefix + '/' + file_without_suffix + '.css'
+            response = _urlopen(url)
+            own_css = response.read().decode("utf-8")
+        except IOError:
+            own_css = ''
+
         return flask.render_template('render.html',
                                      title=title,
                                      markdown=fix_images(markdown, prefix),
                                      style=style,
+                                     own_css=own_css,
                                      engine='{0}-{1}'.format(engine, engine_version))
     except IOError:
         return flask.render_template('404.html')
