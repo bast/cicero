@@ -1,7 +1,7 @@
 
 
-Running a local web server
-==========================
+Running the app on your computer
+================================
 
 Sometimes you need to present your talk without an internet connection.
 In this situation you can run a local web server.
@@ -19,8 +19,8 @@ Then start the server::
   * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
 
 
-Serving local files
-===================
+How to preview and serve your talk locally
+==========================================
 
 Using a local server it is also no problem to serve your talk locally to see the
 result before you push them to the repository::
