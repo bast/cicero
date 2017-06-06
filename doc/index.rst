@@ -30,4 +30,5 @@ Cicero: Serving slides written in Markdown
    :maxdepth: 1
    :caption: Maintaining your own server
 
-   server.rst
+   maintenance/env.rst
+   maintenance/dependencies.rst
