@@ -1,6 +1,7 @@
 
 
-How to change the background image
-==================================
+Background image
+================
 
-This is nicely documented here: https://github.com/gnab/remark/wiki/Markdown#background-image
+Setting and changing the background image is nicely documented here:
+https://github.com/gnab/remark/wiki/Markdown#background-image
