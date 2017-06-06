@@ -27,6 +27,6 @@ Cicero: Serving slides written in Markdown
 
 .. toctree::
    :maxdepth: 1
-   :caption: Maintaining a server
+   :caption: Maintaining your own server
 
    server.rst
