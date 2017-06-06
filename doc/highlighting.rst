@@ -3,9 +3,11 @@
 Code highlighting
 =================
 
-The default code highlighting style is "default". You can change it on the fly using ``?style``::
+The default code highlighting style is "default". You can change it on the fly using ``?style``.
 
-  http://cicero.xyz/v2/remark/github/<namespace>/<repo>/<branch>/<talk>/?style=monokai
+Example::
+
+  http://cicero.xyz/v3/remark/0.14.0/github.com/bast/talk-complexity/master/talk.md/?style=monokai#16
 
 Supported styles::
 
