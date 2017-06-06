@@ -1,4 +1,7 @@
 
+The API currently only supports [remark](https://github.com/gnab/remark) but in future
+we plan to support also other rendering engines.
+
 
 v3
 ==
