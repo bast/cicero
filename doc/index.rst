@@ -12,10 +12,10 @@ Cicero: Serving slides written in Markdown
 
 .. toctree::
    :maxdepth: 1
-   :caption: Styling
+   :caption: Styling your remark slides
 
-   highlighting.rst
-   templating.rst
+   remark/highlighting.rst
+   remark/templating.rst
 
 
 .. toctree::
