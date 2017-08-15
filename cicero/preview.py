@@ -30,12 +30,19 @@ def home():
         with io.open(own_css_file, 'r') as css_file:
             own_css = css_file.read()
     own_css = Markup(own_css) # disable autoescaping
+    # use own javascript, if available
+    own_js_file = talk_no_suffix + '.js'
+    own_javascript = ''
+    if os.path.isfile(own_js_file):
+        with io.open(own_js_file, 'r') as js_file:
+            own_javascript = js_file.read()
 
     return render_template('render.html',
                            title=title,
                            markdown=markdown,
                            style=style,
                            own_css=own_css,
+                           own_javascript=own_javascript,
                            engine=config['engine'])
 
 

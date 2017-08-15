@@ -84,22 +84,30 @@ def render_github_markdown(path, engine, engine_version):
         if style is None:
             style = 'default'
 
+        file_without_suffix, _suffix = os.path.splitext(last_file)
         # if own css is available, we load it
         # if not, we default to empty own css
         try:
-            file_without_suffix, _suffix = os.path.splitext(last_file)
             url = prefix + '/' + file_without_suffix + '.css'
             response = _urlopen(url)
             own_css = response.read().decode("utf-8")
         except IOError:
             own_css = ''
         own_css = flask.Markup(own_css) # disable autoescaping
+        # .. do the same for own javascript
+        try:
+            url = prefix + '/' + file_without_suffix + '.js'
+            response = _urlopen(url)
+            own_javascript = response.read().decode("utf-8")
+        except IOError:
+            own_javascript = ''
 
         return flask.render_template('render.html',
                                      title=title,
                                      markdown=fix_images(markdown, prefix),
                                      style=style,
                                      own_css=own_css,
+                                     own_javascript=own_javascript,
                                      engine='{0}-{1}'.format(engine, engine_version))
     except IOError:
         return flask.render_template('404.html')
