@@ -7,7 +7,7 @@ blueprint = Blueprint('preview', __name__)
 def home():
     import io
     import os
-    from flask import current_app, render_template, render_template_string, request
+    from flask import current_app, render_template, render_template_string, request, Markup
     from .title import extract_title
     from .images import fix_images
 
@@ -29,6 +29,7 @@ def home():
     if os.path.isfile(own_css_file):
         with io.open(own_css_file, 'r') as css_file:
             own_css = css_file.read()
+    own_css = Markup(own_css) # disable autoescaping
 
     return render_template('render.html',
                            title=title,

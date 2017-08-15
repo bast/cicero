@@ -93,6 +93,7 @@ def render_github_markdown(path, engine, engine_version):
             own_css = response.read().decode("utf-8")
         except IOError:
             own_css = ''
+        own_css = flask.Markup(own_css) # disable autoescaping
 
         return flask.render_template('render.html',
                                      title=title,
