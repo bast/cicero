@@ -101,6 +101,16 @@ def render_github_markdown(path, engine, engine_version):
             own_javascript = response.read().decode("utf-8")
         except IOError:
             own_javascript = ''
+        # use custom configuration for the rendering engine, if available
+        try:
+            url = prefix + '/' + file_without_suffix + '.conf'
+            response = _urlopen(url)
+            own_conf = ''
+            for line in response.readlines():
+                own_conf += line.decode("utf-8").replace('\n', ',\n')
+            own_conf = own_conf.rstrip('\n')
+        except IOError:
+            own_conf = ''
 
         return flask.render_template('render.html',
                                      title=title,
@@ -108,6 +118,7 @@ def render_github_markdown(path, engine, engine_version):
                                      style=style,
                                      own_css=own_css,
                                      own_javascript=own_javascript,
+                                     own_conf=own_conf,
                                      engine='{0}-{1}'.format(engine, engine_version))
     except IOError:
         return flask.render_template('404.html')

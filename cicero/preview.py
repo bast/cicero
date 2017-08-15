@@ -36,6 +36,14 @@ def home():
     if os.path.isfile(own_js_file):
         with io.open(own_js_file, 'r') as js_file:
             own_javascript = js_file.read()
+    # use custom configuration for the rendering engine, if available
+    own_conf_file = talk_no_suffix + '.conf'
+    own_conf = ''
+    if os.path.isfile(own_conf_file):
+        with io.open(own_conf_file, 'r') as conf_file:
+            for line in conf_file.readlines():
+                own_conf += line.replace('\n', ',\n')
+            own_conf = own_conf.rstrip('\n')
 
     return render_template('render.html',
                            title=title,
@@ -43,6 +51,7 @@ def home():
                            style=style,
                            own_css=own_css,
                            own_javascript=own_javascript,
+                           own_conf=own_conf,
                            engine=config['engine'])
 
 
