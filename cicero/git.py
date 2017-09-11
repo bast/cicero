@@ -95,12 +95,14 @@ def render_github_markdown(path, engine, engine_version):
             own_css = ''
         own_css = flask.Markup(own_css) # disable autoescaping
         # .. do the same for own javascript
-        try:
-            url = prefix + '/' + file_without_suffix + '.js'
-            response = _urlopen(url)
-            own_javascript = response.read().decode("utf-8")
-        except IOError:
-            own_javascript = ''
+#       try:
+#           url = prefix + '/' + file_without_suffix + '.js'
+#           response = _urlopen(url)
+#           own_javascript = response.read().decode("utf-8")
+#       except IOError:
+#           own_javascript = ''
+        # for the moment I am not sure whether the above is not too risky
+        own_javascript = ''
         # use custom configuration for the rendering engine, if available
         try:
             url = prefix + '/' + file_without_suffix + '.conf'
