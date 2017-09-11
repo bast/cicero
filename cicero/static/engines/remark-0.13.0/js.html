@@ -1,5 +1,7 @@
 <script type="text/javascript">
+    {{ own_javascript|indent|safe }}
     var slideshow = remark.create({
+        {{ own_conf|indent(8)|safe }}
         highlightStyle: '{{ style }}',
         highlightLines: true
       }) ;

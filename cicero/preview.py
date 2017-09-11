@@ -7,7 +7,7 @@ blueprint = Blueprint('preview', __name__)
 def home():
     import io
     import os
-    from flask import current_app, render_template, render_template_string, request
+    from flask import current_app, render_template, render_template_string, request, Markup
     from .title import extract_title
     from .images import fix_images
 
@@ -29,12 +29,29 @@ def home():
     if os.path.isfile(own_css_file):
         with io.open(own_css_file, 'r') as css_file:
             own_css = css_file.read()
+    own_css = Markup(own_css) # disable autoescaping
+    # use own javascript, if available
+    own_js_file = talk_no_suffix + '.js'
+    own_javascript = ''
+    if os.path.isfile(own_js_file):
+        with io.open(own_js_file, 'r') as js_file:
+            own_javascript = js_file.read()
+    # use custom configuration for the rendering engine, if available
+    own_conf_file = talk_no_suffix + '.conf'
+    own_conf = ''
+    if os.path.isfile(own_conf_file):
+        with io.open(own_conf_file, 'r') as conf_file:
+            for line in conf_file.readlines():
+                own_conf += line.replace('\n', ',\n')
+            own_conf = own_conf.rstrip('\n')
 
     return render_template('render.html',
                            title=title,
                            markdown=markdown,
                            style=style,
                            own_css=own_css,
+                           own_javascript=own_javascript,
+                           own_conf=own_conf,
                            engine=config['engine'])
 
 
