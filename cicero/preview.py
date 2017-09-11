@@ -29,7 +29,7 @@ def home():
     if os.path.isfile(own_css_file):
         with io.open(own_css_file, 'r') as css_file:
             own_css = css_file.read()
-    own_css = Markup(own_css) # disable autoescaping
+    own_css = Markup(own_css)  # disable autoescaping
     # use own javascript, if available
     own_js_file = talk_no_suffix + '.js'
     own_javascript = ''

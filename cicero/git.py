@@ -93,7 +93,7 @@ def render_github_markdown(path, engine, engine_version):
             own_css = response.read().decode("utf-8")
         except IOError:
             own_css = ''
-        own_css = flask.Markup(own_css) # disable autoescaping
+        own_css = flask.Markup(own_css)  # disable autoescaping
         # .. do the same for own javascript
 #       try:
 #           url = prefix + '/' + file_without_suffix + '.js'
