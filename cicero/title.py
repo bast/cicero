@@ -2,7 +2,7 @@ def extract_title(markdown):
     for line in markdown.split('\n'):
         if ".title[" in line:
             start = line.index(".title[") + len(".title[")
-            end = line.rindex( "]", start)
+            end = line.rindex("]", start)
             return line[start:end]
         if '#' in line:
             index_first_non_whitespace = len(line) - len(line.lstrip())
