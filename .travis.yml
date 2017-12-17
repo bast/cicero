@@ -11,7 +11,7 @@ install:
 script:
   - pycodestyle --ignore=E501 cicero.py
   - pycodestyle --ignore=E501 cicero
-  - py.test cicero/*
+  - py.test -vv -s cicero/*
 
 notifications:
   email: false
