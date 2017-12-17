@@ -9,8 +9,8 @@ install:
   - pip install -r requirements.txt
 
 script:
-  - pep8 --ignore=E501 cicero.py
-  - pep8 --ignore=E501 cicero
+  - pycodestyle --ignore=E501 cicero.py
+  - pycodestyle --ignore=E501 cicero
   - py.test cicero/*
 
 notifications:
