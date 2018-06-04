@@ -13,8 +13,12 @@ def home():
 
     config = current_app.config
 
-    with io.open(config['filename'], 'r', encoding='utf-8') as mkdfile:
-        markdown = mkdfile.read()
+    try:
+        with io.open(config['filename'], 'r', encoding='utf-8') as mkdfile:
+            markdown = mkdfile.read()
+    except UnicodeDecodeError:
+        with io.open(config['filename'], 'r', encoding='cp1252') as mkdfile:
+            markdown = mkdfile.read()
 
     title = extract_title(markdown)
     markdown = fix_images(markdown, 'images/')

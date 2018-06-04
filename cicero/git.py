@@ -4,6 +4,7 @@ import sys
 import requests
 import json
 
+# FIXME: rather use requests.get
 if sys.version_info[0] > 2:
     from urllib import request
     _urlopen = request.urlopen
@@ -73,9 +74,9 @@ def render_github_markdown(path, engine, engine_version):
     try:
         url = prefix + '/' + last_file
 
-        response = _urlopen(url)
+        response = requests.get(url)
+        markdown = response.text
 
-        markdown = response.read().decode("utf-8")
         if markdown == 'Not Found':
             return flask.render_template('404.html')
 
