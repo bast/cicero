@@ -4,6 +4,14 @@ import sys
 import requests
 import json
 
+# FIXME: rather use requests.get
+if sys.version_info[0] > 2:
+    from urllib import request
+    _urlopen = request.urlopen
+else:
+    import urllib2
+    _urlopen = urllib2.urlopen
+
 blueprint = flask.Blueprint('git', __name__)
 
 URL_BASE = 'CICERO_URL_BASE_is_undefined'
@@ -82,26 +90,28 @@ def render_github_markdown(path, engine, engine_version):
         # if not, we default to empty own css
         try:
             url = prefix + '/' + file_without_suffix + '.css'
-            response = requests.get(url)
-            own_css = response.text
+            response = _urlopen(url)
+            own_css = response.read().decode("utf-8")
         except IOError:
             own_css = ''
         own_css = flask.Markup(own_css)  # disable autoescaping
         # .. do the same for own javascript
 #       try:
 #           url = prefix + '/' + file_without_suffix + '.js'
-#           response = requests.get(url)
-#           own_javascript = response.text
+#           response = _urlopen(url)
+#           own_javascript = response.read().decode("utf-8")
 #       except IOError:
 #           own_javascript = ''
         # for the moment I am not sure whether the above is not too risky
         own_javascript = ''
-
         # use custom configuration for the rendering engine, if available
         try:
             url = prefix + '/' + file_without_suffix + '.conf'
-            response = requests.get(url)
-            own_conf = ',\n'.join(response.text.split('\n'))
+            response = _urlopen(url)
+            own_conf = ''
+            for line in response.readlines():
+                own_conf += line.decode("utf-8").replace('\n', ',\n')
+            own_conf = own_conf.rstrip('\n')
         except IOError:
             own_conf = ''
 
