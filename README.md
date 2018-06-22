@@ -14,7 +14,7 @@ created by [Ole Petter Bang](https://github.com/gnab).
 
 ## Documentation
 
-- http://cicero.readthedocs.io
+- https://cicero.readthedocs.io
 
 
 ## Authors
