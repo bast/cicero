@@ -32,11 +32,11 @@
       }
     </style>
 
-    <!-- http://stackoverflow.com/a/21146439 -->
+    <!-- https://vuejs.org/v2/api/#v-cloak -->
     <style>
-        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-          display: none !important;
-        }
+      [v-cloak] {
+        display: none;
+      }
     </style>
 
   </head>
@@ -47,7 +47,10 @@
     <script src="{{ url_for('static', filename='bootstrap/js/jquery-1.12.4.min.js') }}"></script>
     <script src="{{ url_for('static', filename='bootstrap/js/bootstrap-3.3.7.min.js') }}"></script>
 
-    <script src="{{ url_for('static', filename='search/angular-1.5.9.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.min.js"></script>
+
     <script src="{{ url_for('static', filename='search/app.js') }}"></script>
 
   </body>

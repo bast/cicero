@@ -12,71 +12,79 @@
   </div>
 
   <div class="col-md-5">
-    <div class="raboof row">
-      <h3>Find your talk</h3>
-      <div class="form-area">
-        <form role="form">
-          <div class="form-group">
-            <input placeholder="Select GitHub user or organization" type="text"
-                   class="form-control" ng-model="user"
-                   ng-model-options='{ debounce: 500 }' ng-change="load_repos()" />
-          </div>
+    <div id="app" v-cloak>
 
-          <div class="form-group">
-            <div ng-show="show_repos" ng-cloak>
+      <div class="row">
+        <h3>Find your talk</h3>
+        <div class="form-area">
+          <form role="form">
+            <div class="form-group">
+              <input v-model="user"
+                     type="text"
+                     placeholder="Select GitHub user or organization"
+                     class="form-control" />
+            </div>
+
+            <div class="form-group" v-if="repos.length > 0">
               <h4>Select repository:</h4>
-              <select class="form-control" ng-model="repo"
-                      ng-change="load_branches()" ng-options="item.name for item in repos">
+              <select v-model="repo" class="form-control">
+                <option disabled value="">Please select one</option>
+                <option v-for="item in repos" v-bind:value="item.name">
+                  [[ item.name ]]
+                </option>
               </select>
             </div>
-          </div>
 
-          <div class="form-group">
-            <div ng-show="show_branches" ng-cloak>
+            <div class="form-group" v-if="branches.length > 0">
               <h4>Select branch:</h4>
-              <select class="form-control" ng-model="branch"
-                      ng-change="load_files()" ng-options="item.name for item in branches">
+              <select v-model="branch" class="form-control">
+                <option disabled value="">Please select one</option>
+                <option v-for="item in branches" v-bind:value="item.name">
+                  [[ item.name ]]
+                </option>
               </select>
             </div>
-          </div>
 
-          <div class="form-group">
-            <div ng-show="show_files" ng-cloak>
+            <div class="form-group" v-if="files.length > 0">
               <h4>Select Markdown file to render:</h4>
-              <select class="form-control" ng-model="file"
-                      ng-change="generate_link()" ng-options="item.path for item in files">
+              <select v-model="file" class="form-control">
+                <option disabled value="">Please select one</option>
+                <option v-for="item in files" v-bind:value="item.path">
+                  [[ item.path ]]
+                </option>
               </select>
             </div>
-          </div>
-        </form>
-      </div>
-    </div>
-
-    <div ng-show="show_links" ng-cloak>
-      <div class="row">
-        <h3><b>Share this link with your friends</b></h3>
-        <b><a target="_blank" href="{[ link ]}">{{ url_base }}{[ link ]}</a></b>
+          </form>
+        </div>
       </div>
 
-      <div class="row">
-        <br>
-        Source code:
-        <a target="_blank" href="{[ source_link ]}">{[ source_link ]}</a>
-      </div>
-    </div>
+      <div v-if="link != ''">
+        <div class="row">
+          <h3><b>Share this link with your friends</b></h3>
+          <b><a target="_blank" v-bind:href="link">{{ url_base }}[[ link ]]</a></b>
+        </div>
 
-    <div ng-show="no_files_found" ng-cloak>
-      <div class="row">
-        <div class="panel panel-danger">
-          <div class="panel-heading">
-            <h3 class="panel-title">No Markdown files found in this repository</h3>
-          </div>
-          <div class="panel-body">
-            Try another repository
+        <div class="row">
+          <br>
+          Source code:
+          <a target="_blank" v-bind:href="source_link">[[ source_link ]]</a>
+        </div>
+      </div>
+
+      <div v-if="files_loaded && files.length == 0">
+        <div class="row">
+          <div class="panel panel-danger">
+            <div class="panel-heading">
+              <h3 class="panel-title">No Markdown files found in this repository</h3>
+            </div>
+            <div class="panel-body">
+              Try another repository
+            </div>
           </div>
         </div>
       </div>
-    </div>
+
+    </div> <!-- app -->
 
     <div class="row">
       <h3>This is how it works</h3>
