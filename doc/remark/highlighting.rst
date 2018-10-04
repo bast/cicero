@@ -7,7 +7,7 @@ The default code highlighting style is "default". You can change it on the fly u
 
 Example::
 
-  http://cicero.xyz/v3/remark/0.14.0/github.com/bast/talk-complexity/master/talk.md/?style=monokai#16
+  https://cicero.xyz/v3/remark/0.14.0/github.com/bast/talk-complexity/master/talk.md/?style=monokai#16
 
 Supported styles::
 

@@ -5,7 +5,7 @@
 
 # Cicero
 
-Serving slides written in Markdown: http://cicero.xyz
+Serving slides written in Markdown: https://cicero.xyz
 
 In the background uses [remark](https://github.com/gnab/remark),
 a simple, in-browser, markdown-driven slideshow tool
