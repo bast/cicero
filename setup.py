@@ -32,6 +32,6 @@ setup(name='cicero',
             'requests',
             'sphinx',
             'sphinx_rtd_theme',
-            'flask>=0.10.1,<0.10.2'
+            'flask==1.0.2'
       ]
      )
