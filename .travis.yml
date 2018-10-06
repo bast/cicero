@@ -6,12 +6,13 @@ python:
   - 3.6
 
 install:
-  - pip install -r requirements.txt
+  - pip install pipenv
+  - pipenv install
 
 script:
   - pycodestyle --ignore=E501 cicero.py
   - pycodestyle --ignore=E501 cicero
-  - py.test -vv -s cicero/*
+  - pipenv run py.test -vv -s cicero/*
 
 notifications:
   email: false

@@ -1,0 +1,14 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+pycodestyle = "*"
+pytest = "*"
+requests = "*"
+flask = "*"
+sphinx-rtd-theme = "*"
+Sphinx = "*"
+
+[dev-packages]

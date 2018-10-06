@@ -1,6 +1,0 @@
-flask == 1.0.2
-pycodestyle
-pytest
-requests == 2.19.1
-sphinx
-sphinx_rtd_theme
