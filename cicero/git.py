@@ -4,14 +4,6 @@ import sys
 import requests
 import json
 
-# FIXME: rather use requests.get
-if sys.version_info[0] > 2:
-    from urllib import request
-    _urlopen = request.urlopen
-else:
-    import urllib2
-    _urlopen = urllib2.urlopen
-
 blueprint = flask.Blueprint('git', __name__)
 
 URL_BASE = 'CICERO_URL_BASE_is_undefined'
@@ -71,60 +63,57 @@ def render_github_markdown(path, engine, engine_version):
         # FIXME currently fails, expects session token i think
         prefix = 'https://{0}/{1}/{2}/raw/{3}/'.format(service, owner, repo, ref)
 
-    try:
-        url = prefix + '/' + last_file
+    url = prefix + '/' + last_file
 
-        response = requests.get(url)
-        markdown = response.text
-
-        if markdown == 'Not Found':
-            return flask.render_template('404.html')
-
-        title = extract_title(markdown)
-        style = flask.request.args.get('style')
-        if style is None:
-            style = 'default'
-
-        file_without_suffix, _suffix = os.path.splitext(last_file)
-        # if own css is available, we load it
-        # if not, we default to empty own css
-        try:
-            url = prefix + '/' + file_without_suffix + '.css'
-            response = _urlopen(url)
-            own_css = response.read().decode("utf-8")
-        except IOError:
-            own_css = ''
-        own_css = flask.Markup(own_css)  # disable autoescaping
-        # .. do the same for own javascript
-#       try:
-#           url = prefix + '/' + file_without_suffix + '.js'
-#           response = _urlopen(url)
-#           own_javascript = response.read().decode("utf-8")
-#       except IOError:
-#           own_javascript = ''
-        # for the moment I am not sure whether the above is not too risky
-        own_javascript = ''
-        # use custom configuration for the rendering engine, if available
-        try:
-            url = prefix + '/' + file_without_suffix + '.conf'
-            response = _urlopen(url)
-            own_conf = ''
-            for line in response.readlines():
-                own_conf += line.decode("utf-8").replace('\n', ',\n')
-            own_conf = own_conf.rstrip('\n')
-        except IOError:
-            own_conf = ''
-
-        return flask.render_template('render.html',
-                                     title=title,
-                                     markdown=fix_images(markdown, prefix),
-                                     style=style,
-                                     own_css=own_css,
-                                     own_javascript=own_javascript,
-                                     own_conf=own_conf,
-                                     engine='{0}-{1}'.format(engine, engine_version))
-    except IOError:
+    response = requests.get(url)
+    if response.status_code == 404:
         return flask.render_template('404.html')
+
+    markdown = response.text
+
+    title = extract_title(markdown)
+    style = flask.request.args.get('style')
+    if style is None:
+        style = 'default'
+
+    file_without_suffix, _suffix = os.path.splitext(last_file)
+
+    # if own css is available, we load it
+    # if not, we default to empty own css
+    url = prefix + '/' + file_without_suffix + '.css'
+    response = requests.get(url)
+    if response.status_code == 404:
+        own_css = ''
+    else:
+        own_css = response.text
+        own_css = flask.Markup(own_css)  # disable autoescaping
+
+    # .. do the same for own javascript
+#   url = prefix + '/' + file_without_suffix + '.js'
+#   response = requests.get(url)
+#   if response.status_code == 404:
+#       own_javascript = ''
+#   else:
+#       own_javascript = response.text
+    # for the moment I am not sure whether the above is not too risky
+    own_javascript = ''
+
+    # use custom configuration for the rendering engine, if available
+    url = prefix + '/' + file_without_suffix + '.conf'
+    response = requests.get(url)
+    if response.status_code == 404:
+        own_conf = ''
+    else:
+        own_conf = ',\n'.join(response.text.split('\n'))
+
+    return flask.render_template('render.html',
+                                 title=title,
+                                 markdown=fix_images(markdown, prefix),
+                                 style=style,
+                                 own_css=own_css,
+                                 own_javascript=own_javascript,
+                                 own_conf=own_conf,
+                                 engine='{0}-{1}'.format(engine, engine_version))
 
 
 @blueprint.route('/v1/github/<path:path>/remark/')
