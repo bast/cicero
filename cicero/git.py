@@ -41,12 +41,13 @@ def render_url_markdown(path, engine, engine_version):
     from .title import extract_title
     from .images import fix_images
 
-    (service, owner, repo, ref) = path.split('/')[0:4]
     file_path = '/'.join(path.split('/')[4:])
     if '/' in file_path:
         last_file = file_path.split('/')[-1]
     else:
         last_file = file_path
+
+    (service, owner, repo, ref) = path.split('/')[0:4]
 
     if service == 'github.com':
         # we need to translate the reference to a sha (the reference can be a sha)
@@ -62,7 +63,6 @@ def render_url_markdown(path, engine, engine_version):
 
         prefix = 'https://cdn.jsdelivr.net/gh/{0}/'.format(root)
     else:
-        # FIXME currently fails, expects session token i think
         prefix = 'https://{0}/{1}/{2}/raw/{3}/'.format(service, owner, repo, ref)
 
     url = prefix + '/' + last_file
