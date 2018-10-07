@@ -10,7 +10,7 @@ In this situation you can run a local web server::
   (venv)$ pip install git+https://github.com/bast/cicero.git@master#egg=cicero
   (venv)$ cicero
 
-  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
 
 
 How to preview and serve your talk locally
@@ -35,4 +35,4 @@ Then start the server::
 
   $ pipenv run python cicero.py
 
-  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
