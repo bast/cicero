@@ -16,7 +16,7 @@ extra_files = package_files('cicero/static') + \
 
 setup(name='cicero',
       version='0.1.0',
-      description='Cicero - Serving slides written in Markdown.',
+      description='Cicero - Serving presentation slides written in Markdown.',
       author='Radovan Bast',
       author_email='bast@users.noreply.github.com',
       url='https://github.com/bast/cicero',
