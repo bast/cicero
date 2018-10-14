@@ -52,13 +52,15 @@ def render_github_markdown(path, engine, engine_version):
         # we need to translate the reference to a sha (the reference can be a sha)
         # the reason for this is that cdn.rawgit.com caches files forever
         # the reference may change but the sha won't
+        # when changing to https://www.jsdelivr.com i haven't verified whether
+        # results are cached so translating to hashes might be overkill
         sha = get_sha_github(owner, repo, ref)
 
-        root = '{0}/{1}/{2}'.format(owner, repo, sha)
+        root = '{0}/{1}@{2}'.format(owner, repo, sha)
         if '/' in file_path:
             root += '/' + '/'.join(file_path.split('/')[:-1]) + '/'
 
-        prefix = 'https://cdn.rawgit.com/{0}/'.format(root)
+        prefix = 'https://cdn.jsdelivr.net/gh/{0}/'.format(root)
     else:
         # FIXME currently fails, expects session token i think
         prefix = 'https://{0}/{1}/{2}/raw/{3}/'.format(service, owner, repo, ref)
