@@ -30,8 +30,6 @@ setup(name='cicero',
         },
       install_requires=[
             'requests==2.19.1',
-            'sphinx',
-            'sphinx_rtd_theme',
             'flask==1.0.2'
       ]
      )
