@@ -53,8 +53,8 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'Cicero'
-copyright = '2015-2016, Radovan Bast and contributors'
-author = 'Radovan Bast and contributors'
+copyright = '2015-2018, Radovan Bast, Ole Martin Bjørndalen, and Roberto Di Remigio'
+author = 'Radovan Bast, Ole Martin Bjørndalen, and Roberto Di Remigio'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
