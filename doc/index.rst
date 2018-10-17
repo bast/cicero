@@ -34,4 +34,11 @@ Cicero: Serving presentation slides written in Markdown
    :caption: Maintaining your own server
 
    maintenance/env.rst
-   maintenance/dependencies.rst
+
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Development
+
+   development/dependencies.rst
+   development/env.rst
