@@ -5,8 +5,8 @@ Dependencies
 
 The app depends on the following Python packages::
 
-  flask-0.10.1
-  requests
+  flask-1.0.2
+  requests=2.19.1
 
 On the front-end side we depend on the following libraries::
 
