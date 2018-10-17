@@ -1,5 +1,7 @@
 
-The API currently only supports [remark](https://github.com/gnab/remark) but in future
+The API currently only supports
+`remark <https://github.com/gnab/remark>`__,
+but in future
 we plan to support also other rendering engines.
 
 
