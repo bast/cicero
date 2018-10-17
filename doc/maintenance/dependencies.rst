@@ -10,5 +10,5 @@ The app depends on the following Python packages::
 
 On the front-end side we depend on the following libraries::
 
-  angular-1.5.9
+  vue-2.5.16
   bootstrap-3.3.7
