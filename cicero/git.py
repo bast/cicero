@@ -37,7 +37,7 @@ def home():
     return flask.render_template('index.html', url_base=URL_BASE)
 
 
-def render_github_markdown(path, engine, engine_version):
+def render_url_markdown(path, engine, engine_version):
     from .title import extract_title
     from .images import fix_images
 
@@ -120,14 +120,14 @@ def render_github_markdown(path, engine, engine_version):
 
 @blueprint.route('/v1/github/<path:path>/remark/')
 def render_v1(path):
-    return render_github_markdown('github.com' + '/' + path, 'remark', '0.13.0')
+    return render_url_markdown('github.com' + '/' + path, 'remark', '0.13.0')
 
 
 @blueprint.route('/v2/remark/github/<path:path>/')
 def render_v2(path):
-    return render_github_markdown('github.com' + '/' + path, 'remark', '0.13.0')
+    return render_url_markdown('github.com' + '/' + path, 'remark', '0.13.0')
 
 
 @blueprint.route('/v3/<string:engine>/<string:engine_version>/<path:path>/')
 def render_v3(path, engine, engine_version):
-    return render_github_markdown(path, engine, engine_version)
+    return render_url_markdown(path, engine, engine_version)
