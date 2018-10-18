@@ -41,13 +41,11 @@ def render_url_markdown(path, engine, engine_version):
     from .title import extract_title
     from .images import fix_images
 
-    file_path = '/'.join(path.split('/')[4:])
-    if '/' in file_path:
-        last_file = file_path.split('/')[-1]
-    else:
-        last_file = file_path
-
-    (service, owner, repo, ref) = path.split('/')[0:4]
+    service, owner, repo, ref, *_md_file_path = path.split('/')
+    md_file_path = '/'.join(_md_file_path)
+    md_file_path_root = '/'.join(_md_file_path[:-1])
+    md_file = _md_file_path[-1]
+    md_file_prefix, _ = os.path.splitext(md_file)
 
     if service == 'github.com':
         # we need to translate the reference to a sha (the reference can be a sha)
@@ -58,14 +56,15 @@ def render_url_markdown(path, engine, engine_version):
         sha = get_sha_github(owner, repo, ref)
 
         root = '{0}/{1}@{2}'.format(owner, repo, sha)
-        if '/' in file_path:
-            root += '/' + '/'.join(file_path.split('/')[:-1]) + '/'
 
-        prefix = 'https://cdn.jsdelivr.net/gh/{0}/'.format(root)
+        url_prefix = 'https://cdn.jsdelivr.net/gh/{0}/'.format(root)
     else:
-        prefix = 'https://{0}/{1}/{2}/raw/{3}/'.format(service, owner, repo, ref)
+        url_prefix = 'https://{0}/{1}/{2}/raw/{3}/'.format(service, owner, repo, ref)
 
-    url = prefix + '/' + last_file
+    if '/' in md_file_path:
+        url_prefix += md_file_path_root
+
+    url = url_prefix + '/' + md_file
 
     response = requests.get(url)
     if response.status_code == 404:
@@ -78,11 +77,9 @@ def render_url_markdown(path, engine, engine_version):
     if style is None:
         style = 'default'
 
-    file_without_suffix, _suffix = os.path.splitext(last_file)
-
     # if own css is available, we load it
     # if not, we default to empty own css
-    url = prefix + '/' + file_without_suffix + '.css'
+    url = url_prefix + '/' + md_file_prefix + '.css'
     response = requests.get(url)
     if response.status_code == 404:
         own_css = ''
@@ -91,7 +88,7 @@ def render_url_markdown(path, engine, engine_version):
         own_css = flask.Markup(own_css)  # disable autoescaping
 
     # .. do the same for own javascript
-#   url = prefix + '/' + file_without_suffix + '.js'
+#   url = url_prefix + '/' + md_file_prefix + '.js'
 #   response = requests.get(url)
 #   if response.status_code == 404:
 #       own_javascript = ''
@@ -101,7 +98,7 @@ def render_url_markdown(path, engine, engine_version):
     own_javascript = ''
 
     # use custom configuration for the rendering engine, if available
-    url = prefix + '/' + file_without_suffix + '.conf'
+    url = url_prefix + '/' + md_file_prefix + '.conf'
     response = requests.get(url)
     if response.status_code == 404:
         own_conf = ''
@@ -110,7 +107,7 @@ def render_url_markdown(path, engine, engine_version):
 
     return flask.render_template('render.html',
                                  title=title,
-                                 markdown=fix_images(markdown, prefix),
+                                 markdown=fix_images(markdown, url_prefix),
                                  style=style,
                                  own_css=own_css,
                                  own_javascript=own_javascript,
