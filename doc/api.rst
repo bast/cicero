@@ -12,7 +12,10 @@ This API is the future::
 
   /v3/<engine>/<engine_version>/<repo>/<branch>/<path>/
 
-Example: https://cicero.xyz/v3/remark/0.14.0/github.com/bast/cicero/master/demo/talk.md/
+Examples:
+
+- GitHub: https://cicero.xyz/v3/remark/0.14.0/github.com/bast/cicero/master/demo/talk.md/
+- GitLab: https://cicero.xyz/v3/remark/0.14.0/gitlab.com/bast/cicero-example/master/demo/talk.md/
 
 
 v2
