@@ -45,7 +45,6 @@ def render_url_markdown(path, engine, engine_version):
     md_file_path = '/'.join(_md_file_path)
     md_file_path_root = '/'.join(_md_file_path[:-1])
     md_file = _md_file_path[-1]
-    md_file_prefix, _ = os.path.splitext(md_file)
 
     if service == 'github.com':
         # we need to translate the reference to a sha (the reference can be a sha)
@@ -58,8 +57,15 @@ def render_url_markdown(path, engine, engine_version):
         root = '{0}/{1}@{2}'.format(owner, repo, sha)
 
         url_prefix = 'https://cdn.jsdelivr.net/gh/{0}/'.format(root)
-    else:
+    elif service == 'gitlab.com':
         url_prefix = 'https://{0}/{1}/{2}/raw/{3}/'.format(service, owner, repo, ref)
+    else:
+        *_url_prefix, md_file = path.split('/')
+        url_prefix = 'https://' + '/'.join(_url_prefix)
+        md_file_path = md_file
+        md_file_path_root = ''
+
+    md_file_prefix, _ = os.path.splitext(md_file)
 
     if '/' in md_file_path:
         url_prefix += md_file_path_root

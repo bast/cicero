@@ -16,6 +16,7 @@ Examples:
 
 - GitHub: https://cicero.xyz/v3/remark/0.14.0/github.com/bast/cicero/master/demo/talk.md/
 - GitLab: https://cicero.xyz/v3/remark/0.14.0/gitlab.com/bast/cicero-example/master/demo/talk.md/
+- Some other place: https://cicero.xyz/v3/remark/0.14.0/notabug.org/bast/cicero-example/raw/master/simple-example.md
 
 
 v2
