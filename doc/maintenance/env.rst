@@ -5,7 +5,7 @@ Running your own server
 
 You can run your own Cicero instance on your own server. Cicero is a Flask app
 and to serve it you should use a WSGI server for production.
-The sources are open source: https://github.com/bast/cicero
+The sources are open: https://github.com/bast/cicero
 
 
 Environment variables
