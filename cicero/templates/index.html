@@ -5,16 +5,18 @@
 {% block content %}
 <div class="container">
 
-  <div class="col-md-12">
-    <div class="row">
+  <div class="row">
+    <div class="col">
       <h1>Cicero - Serving presentation slides written in Markdown</h1>
+      <br>
     </div>
   </div>
 
-  <div class="col-md-5">
-    <div id="app" v-cloak>
+  <div class="row">
 
-      <div class="row">
+    <div class="col">
+
+      <div id="app" v-cloak>
         <h3>Find your talk</h3>
         <div class="form-area">
           <form role="form">
@@ -56,78 +58,67 @@
             </div>
           </form>
         </div>
-      </div>
 
-      <div v-if="link != ''">
-        <div class="row">
+        <div v-if="link != ''">
           <h3><b>Share this link with your friends</b></h3>
           <b><a target="_blank" v-bind:href="link">{{ url_base }}[[ link ]]</a></b>
-        </div>
-
-        <div class="row">
           <br>
-          Source code:
-          <a target="_blank" v-bind:href="source_link">[[ source_link ]]</a>
+          Source code: <a target="_blank" v-bind:href="source_link">[[ source_link ]]</a>
+          <br>
+          <br>
         </div>
-      </div>
-
-      <div v-if="files_loaded && files.length == 0">
-        <div class="row">
-          <div class="panel panel-danger">
-            <div class="panel-heading">
-              <h3 class="panel-title">No Markdown files found in this repository</h3>
-            </div>
-            <div class="panel-body">
-              Try another repository
+  
+        <div v-if="files_loaded && files.length == 0">
+          <div class="row">
+            <div class="panel panel-danger">
+              <div class="panel-heading">
+                <h3 class="panel-title">No Markdown files found in this repository</h3>
+              </div>
+              <div class="panel-body">
+                Try another repository
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </div> <!-- app -->
 
-    </div> <!-- app -->
-
-    <div class="row">
       <h3>This is how it works</h3>
       <p>
         You write your talk in Markdown, host it on <a href="https://github.com">GitHub</a>.
         We render it using <a href="http://remarkjs.com">remark.js</a> and serve it for you
         before you can say blueberry pie.
       </p>
-    </div>
 
-    <div class="row">
       <h3>First time here? Try this one-minute demo:</h3>
       <p>
         Under "Find your talk", type "bast", then select repo "cicero", and file "demo/talk.md".
         Then follow the generated link. For a demo using equations, try "demo/talk-equations.md".
       </p>
-    </div>
-  </div>
 
-  <div class="col-md-1">
-  </div>
+    </div> <!-- col -->
 
-  <div class="col-md-6">
-    <h3>Why Cicero</h3>
-    <ul class="list-unstyled">
-      <li>- All you need is a browser. No additional software. Batteries included.</li>
-      <li>- It is easier to share a link to slides than it is to serve them.</li>
-      <li>- It is easier to reuse a Markdown talk than it is to modify PDF slides.</li>
-      <li>- Talks become lightweight, reusable, versionable, branchable, and forkable.</li>
-      <li>- Hackable URLs.</li>
-      <li>- Presentation URL lives as long as the corresponding Markdown file lives.</li>
-      <li>- Free as in beer.</li>
-    </ul>
-
-    <h3>Documentation</h3>
-    <ul class="list-unstyled">
-      <li>- <a href="https://cicero.readthedocs.io" target="_blank">https://cicero.readthedocs.io</a></li>
-    </ul>
-  </div>
+    <div class="col">
+      <h3>Why Cicero</h3>
+      <ul class="list-unstyled">
+        <li>- All you need is a browser. No additional software. Batteries included.</li>
+        <li>- It is easier to share a link to slides than it is to serve them.</li>
+        <li>- It is easier to reuse a Markdown talk than it is to modify PDF slides.</li>
+        <li>- Talks become lightweight, reusable, versionable, branchable, and forkable.</li>
+        <li>- Hackable URLs.</li>
+        <li>- Presentation URL lives as long as the corresponding Markdown file lives.</li>
+        <li>- Free as in beer.</li>
+      </ul>
+     
+      <h3>Documentation</h3>
+      <ul class="list-unstyled">
+        <li>- <a href="https://cicero.readthedocs.io" target="_blank">https://cicero.readthedocs.io</a></li>
+      </ul>
+    </div> <!-- col -->
+  </div> <!-- row -->
 
   <footer>
     <div class="row">
-      <div class="col-lg-12">
+      <div class="col">
         <br>
         <p>
           Cicero (c)
@@ -138,5 +129,6 @@
       </div>
     </div>
   </footer>
-</div>
+
+</div> <!-- container -->
 {% endblock %}
