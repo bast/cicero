@@ -5,14 +5,13 @@
 {% block content %}
 <div class="container">
 
-  <div class="row">
+  <div class="row top-buffer">
     <div class="col">
       <h1>Cicero - Serving presentation slides written in Markdown</h1>
-      <br>
     </div>
   </div>
 
-  <div class="row">
+  <div class="row top-buffer">
 
     <div class="col">
 
@@ -64,10 +63,8 @@
           <b><a target="_blank" v-bind:href="link">{{ url_base }}[[ link ]]</a></b>
           <br>
           Source code: <a target="_blank" v-bind:href="source_link">[[ source_link ]]</a>
-          <br>
-          <br>
         </div>
-  
+
         <div v-if="files_loaded && files.length == 0">
           <div class="row">
             <div class="panel panel-danger">
@@ -82,18 +79,20 @@
         </div>
       </div> <!-- app -->
 
-      <h3>This is how it works</h3>
-      <p>
-        You write your talk in Markdown, host it on <a href="https://github.com">GitHub</a>.
-        We render it using <a href="http://remarkjs.com">remark.js</a> and serve it for you
-        before you can say blueberry pie.
-      </p>
+      <div class="top-buffer">
+        <h3>This is how it works</h3>
+        <p>
+          You write your talk in Markdown, host it on <a href="https://github.com">GitHub</a>.
+          We render it using <a href="http://remarkjs.com">remark.js</a> and serve it for you
+          before you can say blueberry pie.
+        </p>
 
-      <h3>First time here? Try this one-minute demo:</h3>
-      <p>
-        Under "Find your talk", type "bast", then select repo "cicero", and file "demo/talk.md".
-        Then follow the generated link. For a demo using equations, try "demo/talk-equations.md".
-      </p>
+        <h3>First time here? Try this one-minute demo:</h3>
+        <p>
+          Under "Find your talk", type "bast", then select repo "cicero", and file "demo/talk.md".
+          Then follow the generated link. For a demo using equations, try "demo/talk-equations.md".
+        </p>
+      </div>
 
     </div> <!-- col -->
 
@@ -108,7 +107,7 @@
         <li>- Presentation URL lives as long as the corresponding Markdown file lives.</li>
         <li>- Free as in beer.</li>
       </ul>
-     
+
       Documentation: <a href="https://cicero.readthedocs.io" target="_blank">https://cicero.readthedocs.io</a>
       <br>
       Source code: <a href="https://github.com/bast/cicero" target="_blank">https://github.com/bast/cicero</a>
