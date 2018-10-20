@@ -123,12 +123,12 @@ def render_url_markdown(path, engine, engine_version):
 
 @blueprint.route('/v1/github/<path:path>/remark/')
 def render_v1(path):
-    return render_url_markdown('github.com' + '/' + path, 'remark', '0.13.0')
+    return render_url_markdown('github.com' + '/' + path, 'remark', 'legacy')
 
 
 @blueprint.route('/v2/remark/github/<path:path>/')
 def render_v2(path):
-    return render_url_markdown('github.com' + '/' + path, 'remark', '0.13.0')
+    return render_url_markdown('github.com' + '/' + path, 'remark', 'legacy')
 
 
 @blueprint.route('/v3/<string:engine>/<string:engine_version>/<path:path>/')
