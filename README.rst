@@ -4,6 +4,8 @@
    :target: LICENSE
 .. image:: https://img.shields.io/badge/vue-2.5.16-green.svg
    :target: https://vuejs.org
+.. image:: https://badge.fury.io/py/cicero.svg
+   :target: https://badge.fury.io/py/cicero
 
 
 Cicero
