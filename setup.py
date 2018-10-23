@@ -33,7 +33,7 @@ setup(
     author='Radovan Bast',
     author_email='bast@users.noreply.github.com',
     url='https://github.com/bast/cicero',
-    license='GNU Lesser General Public License 2.1',
+    license='GNU Affero General Public License v3',
     packages=['cicero'],
     package_data={'': extra_files},
     entry_points={'console_scripts': ['cicero = cicero.main:main']},
