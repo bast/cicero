@@ -6,7 +6,7 @@ name = "pypi"
 [packages]
 pycodestyle = "*"
 pytest = "*"
-requests = "*"
+requests = ">=2.20"
 flask = "*"
 sphinx-rtd-theme = "*"
 Sphinx = "*"
