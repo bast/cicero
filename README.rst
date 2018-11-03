@@ -21,15 +21,16 @@ Petter Bang <https://github.com/gnab>`__.
 Documentation
 -------------
 
--  https://cicero.readthedocs.io
+- https://cicero.readthedocs.io
+- `Changelog <CHANGES.rst>`__
 
 
 Authors
 -------
 
--  `Radovan Bast <http://bast.fr>`__ (idea, pilot implementation, and
-   plumbing)
--  `Ole Martin Bjørndalen <https://github.com/olemb>`__ (local preview
-   and Blueprint solution)
--  `Roberto Di Remigio <http://totaltrash.xyz>`__ (MathJax support,
-   local templating idea, slide splits)
+- `Radovan Bast <http://bast.fr>`__ (idea, pilot implementation, and
+  plumbing)
+- `Ole Martin Bjørndalen <https://github.com/olemb>`__ (local preview
+  and Blueprint solution)
+- `Roberto Di Remigio <http://totaltrash.xyz>`__ (MathJax support,
+  local templating idea, slide splits)
