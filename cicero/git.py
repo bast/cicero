@@ -3,6 +3,7 @@ import flask
 import sys
 import requests
 import json
+from .version import __version__
 
 blueprint = flask.Blueprint('git', __name__)
 
@@ -34,7 +35,7 @@ def set_url_base(host, port):
 
 @blueprint.route('/')
 def home():
-    return flask.render_template('index.html', url_base=URL_BASE)
+    return flask.render_template('index.html', url_base=URL_BASE, version=__version__)
 
 
 def render_url_markdown(path, engine, engine_version):
