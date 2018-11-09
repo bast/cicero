@@ -1,17 +1,16 @@
-from flask import Blueprint
+import io
+import os
+import flask
+from .title import extract_title
+from .images import fix_images
 
-blueprint = Blueprint('preview', __name__)
+blueprint = flask.Blueprint('preview', __name__)
 
 
 @blueprint.route('/')
 def home():
-    import io
-    import os
-    from flask import current_app, render_template, render_template_string, request, Markup
-    from .title import extract_title
-    from .images import fix_images
 
-    config = current_app.config
+    config = flask.current_app.config
 
     try:
         with io.open(config['filename'], 'r', encoding='utf-8') as mkdfile:
@@ -23,7 +22,7 @@ def home():
     title = extract_title(markdown)
     markdown = fix_images(markdown, 'images/')
 
-    style = request.args.get('style')
+    style = flask.request.args.get('style')
     if style is None:
         style = 'default'
 
@@ -33,7 +32,7 @@ def home():
     if os.path.isfile(own_css_file):
         with io.open(own_css_file, 'r') as css_file:
             own_css = css_file.read()
-    own_css = Markup(own_css)  # disable autoescaping
+    own_css = flask.Markup(own_css)  # disable autoescaping
     # use own javascript, if available
     own_js_file = talk_no_suffix + '.js'
     own_javascript = ''
@@ -49,24 +48,22 @@ def home():
                 own_conf += line.replace('\n', ',\n')
             own_conf = own_conf.rstrip('\n')
 
-    return render_template('render.html',
-                           title=title,
-                           markdown=markdown,
-                           style=style,
-                           own_css=own_css,
-                           own_javascript=own_javascript,
-                           own_conf=own_conf,
-                           engine=config['engine'])
+    return flask.render_template('render.html',
+                                 title=title,
+                                 markdown=markdown,
+                                 style=style,
+                                 own_css=own_css,
+                                 own_javascript=own_javascript,
+                                 own_conf=own_conf,
+                                 engine=config['engine'])
 
 
 @blueprint.route('/images/<path:path>')
 def serve_image(path):
-    from flask import send_from_directory, current_app
-    config = current_app.config
-    return send_from_directory(config['imagedir'], path)
+    config = flask.current_app.config
+    return flask.send_from_directory(config['imagedir'], path)
 
 
 @blueprint.errorhandler(404)
 def page_not_found(e):
-    from flask import render_template
-    return render_template('404.html'), 404
+    return flask.render_template('404.html'), 404

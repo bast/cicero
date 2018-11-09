@@ -4,6 +4,8 @@ import sys
 import requests
 import json
 from .version import __version__
+from .title import extract_title
+from .images import fix_images
 
 blueprint = flask.Blueprint('git', __name__)
 
@@ -39,8 +41,6 @@ def home():
 
 
 def render_url_markdown(path, engine, engine_version):
-    from .title import extract_title
-    from .images import fix_images
 
     service, owner, repo, ref, *_md_file_path = path.split('/')
     md_file_path = '/'.join(_md_file_path)

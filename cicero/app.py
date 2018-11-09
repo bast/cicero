@@ -1,8 +1,8 @@
 from flask import Flask, render_template
+import os
 
 
 def _get_subdir(dirname):
-    import os
     return os.path.join(os.path.dirname(__file__), dirname)
 
 
