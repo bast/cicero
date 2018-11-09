@@ -27,18 +27,21 @@ def home():
         style = 'default'
 
     talk_no_suffix, _suffix = os.path.splitext(config['filename'])
+
     own_css_file = talk_no_suffix + '.css'
     own_css = ''  # by default no own css
     if os.path.isfile(own_css_file):
         with io.open(own_css_file, 'r') as css_file:
             own_css = css_file.read()
     own_css = flask.Markup(own_css)  # disable autoescaping
+
     # use own javascript, if available
     own_js_file = talk_no_suffix + '.js'
     own_javascript = ''
     if os.path.isfile(own_js_file):
         with io.open(own_js_file, 'r') as js_file:
             own_javascript = js_file.read()
+
     # use custom configuration for the rendering engine, if available
     own_conf_file = talk_no_suffix + '.conf'
     own_conf = ''
