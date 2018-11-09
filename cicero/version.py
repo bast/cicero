@@ -1,16 +1,10 @@
+from packaging.version import parse
 from collections import namedtuple
 
-__version__ = '0.1.1-beta-1'
+__version__ = '0.1.1b1'
 
-version_info = namedtuple('version_info',
-                          ['major', 'minor', 'micro', 'releaselevel'])
+version_info = namedtuple('version_info', ['major', 'minor', 'micro'])
 
-major_minor_micro = __version__.split('-')[0]
+_p = parse(__version__)
 
-s = major_minor_micro.split('.')
-
-version_info.major = int(s[0])
-version_info.minor = int(s[1])
-version_info.micro = int(s[2])
-
-version_info.releaselevel = __version__[len(major_minor_micro) + 1:]
+version_info.major, version_info.minor, version_info.micro = _p.release
