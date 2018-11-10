@@ -7,20 +7,17 @@
     <meta name="description" content="cicero.xyz: serving slides written in markdown." />
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/icon.png') }}" />
     <title>{{ title }}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='engines/' + engine + '/vendor.css') }}">
+
+    {{ custom_head_html }}
+    <script src="{{ url_for('static', filename='engines/' + engine + '/vendor.js') }}" type="text/javascript"></script>
 
     <style>
-      {{ own_css }}
+      {{ custom_css }}
     </style>
   </head>
 
   <body>
-    {% include 'engines/' + engine + '/body.html' %}
-
-    <script src="{{ url_for('static', filename='engines/' + engine + '/vendor.js') }}" type="text/javascript">
-    </script>
-
-    {% include 'engines/' + engine + '/js.html' %}
+    {{ custom_body_html }}
   </body>
 
 </html>

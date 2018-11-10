@@ -3,8 +3,20 @@ import os
 import flask
 from .title import extract_title
 from .images import fix_images
+from jinja2 import Template
 
 blueprint = flask.Blueprint('preview', __name__)
+
+
+def _read_if_exists(custom_prefix, suffix, engine):
+    custom_file_name = custom_prefix + '.' + suffix
+    vendor_file_name = os.path.join(os.path.dirname(__file__), 'templates', 'engines', engine, 'vendor.' + suffix)
+    for file_name in [custom_file_name, vendor_file_name]:
+        if os.path.isfile(file_name):
+            with io.open(file_name, 'r') as f:
+                # disable autoescaping
+                return f.read()
+    return ''
 
 
 @blueprint.route('/')
@@ -28,36 +40,20 @@ def home():
 
     talk_no_suffix, _suffix = os.path.splitext(config['filename'])
 
-    own_css_file = talk_no_suffix + '.css'
-    own_css = ''  # by default no own css
-    if os.path.isfile(own_css_file):
-        with io.open(own_css_file, 'r') as css_file:
-            own_css = css_file.read()
-    own_css = flask.Markup(own_css)  # disable autoescaping
+    engine = config['engine']
 
-    # use own javascript, if available
-    own_js_file = talk_no_suffix + '.js'
-    own_javascript = ''
-    if os.path.isfile(own_js_file):
-        with io.open(own_js_file, 'r') as js_file:
-            own_javascript = js_file.read()
+    custom_css = flask.Markup(_read_if_exists(talk_no_suffix, 'css', engine))
 
-    # use custom configuration for the rendering engine, if available
-    own_conf_file = talk_no_suffix + '.conf'
-    own_conf = ''
-    if os.path.isfile(own_conf_file):
-        with io.open(own_conf_file, 'r') as conf_file:
-            for line in conf_file.readlines():
-                own_conf += line.replace('\n', ',\n')
-            own_conf = own_conf.rstrip('\n')
+    custom_head_html = flask.Markup(_read_if_exists(talk_no_suffix, 'head.html', engine))
+
+    custom_body_html = _read_if_exists(talk_no_suffix, 'body.html', engine)
+    custom_body_html = flask.Markup(Template(custom_body_html).render(markdown=markdown))
 
     return flask.render_template('render.html',
                                  title=title,
-                                 markdown=markdown,
-                                 style=style,
-                                 own_css=own_css,
-                                 own_javascript=own_javascript,
-                                 own_conf=own_conf,
+                                 custom_css=custom_css,
+                                 custom_head_html=custom_head_html,
+                                 custom_body_html=custom_body_html,
                                  engine=config['engine'])
 
 

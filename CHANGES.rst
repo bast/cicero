@@ -4,11 +4,12 @@ Changelog
 =========
 
 
-Version 0.1.z
+Version 1.y.z
 -------------
 
 Unreleased.
 
+- Refactor customization of slides.
 - Bump requests to 2.20.0.
 
 
