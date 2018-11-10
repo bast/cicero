@@ -11,6 +11,7 @@ Unreleased.
 
 - Refactor customization of slides.
 - Page title is not extracted from the markdown file.
+- Allow to render using https://revealjs.com.
 - Bump requests to 2.20.0.
 
 

@@ -1,0 +1,32 @@
+<div class="reveal">
+  <div class="slides">
+    <!-- slides are separated by newline + three dashes + newline, vertical slides identical but two dashes -->
+    <section data-markdown data-separator="^\n---\n$" data-separator-vertical="^\n--\n$">
+      <script type="text/template">
+{{ markdown }}
+      </script>
+    </section>
+  </div>
+</div>
+
+<script src="{{ engine_root }}/lib/js/head.min.js"></script>
+<script src="{{ engine_root }}/js/reveal.js"></script>
+
+<script>
+  Reveal.initialize({
+    controls: true,
+    progress: true,
+    history: true,
+    center: true,
+
+    dependencies: [
+      { src: '{{ engine_root }}/plugin/markdown/marked.js',
+        condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: '{{ engine_root }}/plugin/markdown/markdown.js',
+        condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: '{{ engine_root }}/plugin/highlight/highlight.js',
+        async: true,
+        callback: function() { hljs.initHighlightingOnLoad(); } }
+    ]
+  });
+</script>
