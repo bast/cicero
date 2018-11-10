@@ -1,7 +1,7 @@
 <!-- .slide: data-background="#000000" -->
 ## A slide with a dark background
 
-Try to press arrow down.
+Try to press the down arrow key.
 
 --
 
@@ -9,6 +9,9 @@ Try to press arrow down.
 ## Another slide
 
 Try **Esc** and **F** keys.
+
+- A bullet point
+- Another convincing argument
 
 ---
 
