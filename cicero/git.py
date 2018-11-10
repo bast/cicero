@@ -4,7 +4,6 @@ import sys
 import requests
 import json
 from .version import __version__
-from .title import extract_title
 from .images import fix_images
 
 blueprint = flask.Blueprint('git', __name__)
@@ -79,7 +78,6 @@ def render_url_markdown(path, engine, engine_version):
 
     markdown = response.text
 
-    title = extract_title(markdown)
     style = flask.request.args.get('style')
     if style is None:
         style = 'default'
@@ -113,7 +111,7 @@ def render_url_markdown(path, engine, engine_version):
         own_conf = ',\n'.join(response.text.split('\n'))
 
     return flask.render_template('render.html',
-                                 title=title,
+                                 title='presentation',
                                  markdown=fix_images(markdown, url_prefix),
                                  style=style,
                                  own_css=own_css,

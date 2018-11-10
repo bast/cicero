@@ -1,7 +1,6 @@
 import io
 import os
 import flask
-from .title import extract_title
 from .images import fix_images
 from jinja2 import Template
 
@@ -31,7 +30,6 @@ def home():
         with io.open(config['filename'], 'r', encoding='cp1252') as mkdfile:
             markdown = mkdfile.read()
 
-    title = extract_title(markdown)
     markdown = fix_images(markdown, 'images/')
 
     style = flask.request.args.get('style')
@@ -50,7 +48,7 @@ def home():
     custom_body_html = flask.Markup(Template(custom_body_html).render(markdown=markdown))
 
     return flask.render_template('render.html',
-                                 title=title,
+                                 title='presentation',
                                  custom_css=custom_css,
                                  custom_head_html=custom_head_html,
                                  custom_body_html=custom_body_html,
