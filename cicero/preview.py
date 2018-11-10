@@ -39,13 +39,15 @@ def home():
     talk_no_suffix, _suffix = os.path.splitext(config['filename'])
 
     engine = config['engine']
+    engine_root = flask.url_for('static', filename='engines/' + engine)
 
     custom_css = flask.Markup(_read_if_exists(talk_no_suffix, 'css', engine))
 
-    custom_head_html = flask.Markup(_read_if_exists(talk_no_suffix, 'head.html', engine))
+    _tmp = _read_if_exists(talk_no_suffix, 'head.html', engine)
+    custom_head_html = flask.Markup(Template(_tmp).render(engine_root=engine_root))
 
-    custom_body_html = _read_if_exists(talk_no_suffix, 'body.html', engine)
-    custom_body_html = flask.Markup(Template(custom_body_html).render(markdown=markdown))
+    _tmp = _read_if_exists(talk_no_suffix, 'body.html', engine)
+    custom_body_html = flask.Markup(Template(_tmp).render(markdown=markdown, engine_root=engine_root))
 
     return flask.render_template('render.html',
                                  title='presentation',

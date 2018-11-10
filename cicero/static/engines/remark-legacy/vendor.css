@@ -1,18 +1,3 @@
-@import url(https://fonts.googleapis.com/css?family=Droid+Serif);
-@import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
-@import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
-
-body {
-  font-family: 'Droid Serif';
-}
-h1, h2, h3 {
-  font-family: 'Yanone Kaffeesatz';
-  font-weight: 400;
-  margin-bottom: 0;
-}
-.remark-slide-content h1 { font-size: 3em; }
-.remark-slide-content h2 { font-size: 2em; }
-.remark-slide-content h3 { font-size: 1.6em; }
 .footnote {
   position: absolute;
   bottom: 3em;
@@ -28,8 +13,6 @@ code {
   background: #e7e8e2;
   border-radius: 5px;
 }
-.remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
-.remark-code-line-highlighted     { background-color: #373832; }
 .pull-left {
   float: left;
   width: 47%;
