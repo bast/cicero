@@ -35,14 +35,14 @@ for i in range(1, 101):
 
 ## Images (1/2)
 
-Slide 2
+An image fetched from the web:
 
-![Sample image](https://s3.amazonaws.com/static.slid.es/logo/v2/slides-symbol-512x512.png)
+![Sample image](https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/The_Young_Cicero_Reading.jpg/316px-The_Young_Cicero_Reading.jpg)
 
 ---
 
 ## Images (2/2)
 
-Slide 2
+An image stored alongside the slides:
 
-![Sample image](https://s3.amazonaws.com/static.slid.es/logo/v2/slides-symbol-512x512.png)
+![Sample image](img/cicero.jpg)
