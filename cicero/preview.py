@@ -31,10 +31,6 @@ def home():
 
     markdown = fix_images(markdown, 'images/')
 
-    style = flask.request.args.get('style')
-    if style is None:
-        style = 'default'
-
     talk_no_suffix, _suffix = os.path.splitext(config['filename'])
 
     engine = config['engine']

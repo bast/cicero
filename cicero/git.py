@@ -78,10 +78,6 @@ def render_url_markdown(path, engine, engine_version):
 
     markdown = response.text
 
-    style = flask.request.args.get('style')
-    if style is None:
-        style = 'default'
-
     # if own css is available, we load it
     # if not, we default to empty own css
     url = url_prefix + '/' + md_file_prefix + '.css'
@@ -113,7 +109,6 @@ def render_url_markdown(path, engine, engine_version):
     return flask.render_template('render.html',
                                  title='presentation',
                                  markdown=fix_images(markdown, url_prefix),
-                                 style=style,
                                  own_css=own_css,
                                  own_javascript=own_javascript,
                                  own_conf=own_conf,
