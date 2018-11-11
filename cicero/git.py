@@ -1,3 +1,4 @@
+import io
 import os
 import flask
 import sys
@@ -5,6 +6,7 @@ import requests
 import json
 from .version import __version__
 from .images import fix_images
+from jinja2 import Template
 
 blueprint = flask.Blueprint('git', __name__)
 
@@ -32,6 +34,18 @@ def test_get_sha_github():
 def set_url_base(host, port):
     global URL_BASE
     URL_BASE = 'http://{}:{}'.format(host, port)
+
+
+def _read_if_exists(url_prefix, custom_prefix, suffix, engine):
+    url = url_prefix + '/' + custom_prefix + '.' + suffix
+    response = requests.get(url)
+    if response.status_code != 404:
+        return response.text
+    vendor_file_name = os.path.join(os.path.dirname(__file__), 'templates', 'engines', engine, 'vendor.' + suffix)
+    if os.path.isfile(vendor_file_name):
+        with io.open(vendor_file_name, 'r') as f:
+            return f.read()
+    return ''
 
 
 @blueprint.route('/')
@@ -71,48 +85,31 @@ def render_url_markdown(path, engine, engine_version):
         url_prefix += md_file_path_root
 
     url = url_prefix + '/' + md_file
-
     response = requests.get(url)
     if response.status_code == 404:
         return flask.render_template('404.html')
 
     markdown = response.text
+    markdown = fix_images(markdown, url_prefix + '/')
 
-    # if own css is available, we load it
-    # if not, we default to empty own css
-    url = url_prefix + '/' + md_file_prefix + '.css'
-    response = requests.get(url)
-    if response.status_code == 404:
-        own_css = ''
-    else:
-        own_css = response.text
-        own_css = flask.Markup(own_css)  # disable autoescaping
+    _engine = '{0}-{1}'.format(engine, engine_version)
+    engine_root = flask.url_for('static', filename='engines/' + _engine)
 
-    # .. do the same for own javascript
-#   url = url_prefix + '/' + md_file_prefix + '.js'
-#   response = requests.get(url)
-#   if response.status_code == 404:
-#       own_javascript = ''
-#   else:
-#       own_javascript = response.text
-    # for the moment I am not sure whether the above is not too risky
-    own_javascript = ''
+    # flask.Markup to disable autoescaping
+    custom_css = flask.Markup(_read_if_exists(url_prefix, md_file_prefix, 'css', _engine))
 
-    # use custom configuration for the rendering engine, if available
-    url = url_prefix + '/' + md_file_prefix + '.conf'
-    response = requests.get(url)
-    if response.status_code == 404:
-        own_conf = ''
-    else:
-        own_conf = ',\n'.join(response.text.split('\n'))
+    _tmp = _read_if_exists(url_prefix, md_file_prefix, 'head.html', _engine)
+    custom_head_html = flask.Markup(Template(_tmp).render(engine_root=engine_root))
+
+    _tmp = _read_if_exists(url_prefix, md_file_prefix, 'body.html', _engine)
+    custom_body_html = flask.Markup(Template(_tmp).render(markdown=markdown, engine_root=engine_root))
 
     return flask.render_template('render.html',
                                  title='presentation',
-                                 markdown=fix_images(markdown, url_prefix),
-                                 own_css=own_css,
-                                 own_javascript=own_javascript,
-                                 own_conf=own_conf,
-                                 engine='{0}-{1}'.format(engine, engine_version))
+                                 custom_css=custom_css,
+                                 custom_head_html=custom_head_html,
+                                 custom_body_html=custom_body_html,
+                                 engine=_engine)
 
 
 @blueprint.route('/v1/github/<path:path>/remark/')
