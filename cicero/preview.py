@@ -13,7 +13,6 @@ def _read_if_exists(custom_prefix, suffix, engine):
     for file_name in [custom_file_name, vendor_file_name]:
         if os.path.isfile(file_name):
             with io.open(file_name, 'r') as f:
-                # disable autoescaping
                 return f.read()
     return ''
 
@@ -41,6 +40,7 @@ def home():
     engine = config['engine']
     engine_root = flask.url_for('static', filename='engines/' + engine)
 
+    # flask.Markup to disable autoescaping
     custom_css = flask.Markup(_read_if_exists(talk_no_suffix, 'css', engine))
 
     _tmp = _read_if_exists(talk_no_suffix, 'head.html', engine)
