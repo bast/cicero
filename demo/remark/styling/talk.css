@@ -1,0 +1,39 @@
+h1 {
+  color: #4a235a;
+}
+
+h2 {
+  color: #6c3483;
+}
+
+h3 {
+  color: #8e44ad;
+}
+
+a {
+  color: #3498db;
+}
+
+.inverse {
+  background: #272822;
+  color: #777872;
+}
+
+.inverse h1, .inverse h2 {
+  color: #a3e4d7;
+  line-height: 0.8em;
+}
+
+.background h1 {
+  color: #e8daef;
+}
+
+.left-column {
+  width: 50%;
+  float: left;
+}
+
+.right-column {
+  width: 50%;
+  float: right;
+}
