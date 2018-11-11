@@ -18,6 +18,7 @@ def expand_img_link(s, prefix):
             return s.replace(src, prefix + src)
 
     if 'background-image: url(' in s:
+        if 'http' not in s:
             p = re.compile(r'background-image: url\(([^")]+)')
             src = p.findall(s)[0]
             return s.replace(src, prefix + src)
