@@ -32,14 +32,14 @@ You can **style your slides** to your heart's content.
 
 .. toctree::
    :maxdepth: 1
-   :caption: Styling your remark slides
+   :caption: Styling your slides
 
-   remark/custom.rst
-   remark/images.rst
-   remark/background.rst
-   remark/math.rst
-   remark/highlighting.rst
-   remark/css.rst
+   style/custom.rst
+   style/images.rst
+   style/background.rst
+   style/math.rst
+   style/highlighting.rst
+   style/css.rst
 
 
 .. toctree::
