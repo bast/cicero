@@ -13,9 +13,13 @@ Cicero
 
 Serving presentation slides written in Markdown: https://cicero.xyz
 
-In the background uses `remark <https://github.com/gnab/remark>`__, a
-simple, in-browser, markdown-driven slideshow tool created by `Ole
-Petter Bang <https://github.com/gnab>`__.
+In the background uses:
+
+- `remark <https://github.com/gnab/remark>`__, a
+  simple, in-browser, markdown-driven slideshow tool created by `Ole
+  Petter Bang <https://github.com/gnab>`__.
+- `reveal.js <https://https://revealjs.com>`__, created by
+  `Hakim El Hattab <https://hakim.se>`__ and contributors.
 
 
 Documentation
