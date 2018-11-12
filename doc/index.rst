@@ -18,6 +18,13 @@ You can **style your slides** to your heart's content.
 
 .. toctree::
    :maxdepth: 1
+   :caption: First steps
+
+   getting_started.rst
+
+
+.. toctree::
+   :maxdepth: 1
    :caption: Local preview
 
    local.rst
