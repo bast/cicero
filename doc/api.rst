@@ -7,13 +7,21 @@ This API is the future::
 
   /v3/<engine>/<engine_version>/<repo>/<branch>/<path>
 
-Examples:
+Examples with `files on GitHub <https://github.com/bast/cicero/tree/master/demo>`__:
 
 - https://cicero.xyz/v3/remark/0.14.0/github.com/bast/cicero/master/demo/remark/simple/talk.md
 - https://cicero.xyz/v3/remark/0.14.0/github.com/bast/cicero/master/demo/remark/styling/talk.md
 - https://cicero.xyz/v3/remark/0.14.0/github.com/bast/cicero/master/demo/remark/equations/talk.md
 - https://cicero.xyz/v3/remark/0.14.0/github.com/bast/cicero/master/demo/remark/original/talk.md
 - https://cicero.xyz/v3/reveal.js/3.7.0/github.com/bast/cicero/master/demo/reveal.js/talk.md
+
+Examples with `files on GitLab <https://gitlab.com/bast/cicero-example/tree/master/demo>`__:
+
+- https://cicero.xyz/v3/remark/0.14.0/gitlab.com/bast/cicero-example/master/demo/remark/simple/talk.md
+- https://cicero.xyz/v3/remark/0.14.0/gitlab.com/bast/cicero-example/master/demo/remark/styling/talk.md
+- https://cicero.xyz/v3/remark/0.14.0/gitlab.com/bast/cicero-example/master/demo/remark/equations/talk.md
+- https://cicero.xyz/v3/remark/0.14.0/gitlab.com/bast/cicero-example/master/demo/remark/original/talk.md
+- https://cicero.xyz/v3/reveal.js/3.7.0/gitlab.com/bast/cicero-example/master/demo/reveal.js/talk.md
 
 
 v2
