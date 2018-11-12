@@ -6,7 +6,7 @@ import requests
 import json
 from .version import __version__
 from .images import fix_images
-from jinja2 import Template
+from .render import render
 
 blueprint = flask.Blueprint('git', __name__)
 
@@ -34,18 +34,6 @@ def test_get_sha_github():
 def set_url_base(host, port):
     global URL_BASE
     URL_BASE = 'http://{}:{}'.format(host, port)
-
-
-def _read_if_exists(url_prefix, custom_prefix, suffix, engine):
-    url = url_prefix + '/' + custom_prefix + '.' + suffix
-    response = requests.get(url)
-    if response.status_code != 404:
-        return response.text
-    vendor_file_name = os.path.join(os.path.dirname(__file__), 'templates', 'engines', engine, 'vendor.' + suffix)
-    if os.path.isfile(vendor_file_name):
-        with io.open(vendor_file_name, 'r') as f:
-            return f.read()
-    return ''
 
 
 @blueprint.route('/')
@@ -88,28 +76,14 @@ def render_url_markdown(path, engine, engine_version):
     response = requests.get(url)
     if response.status_code == 404:
         return flask.render_template('404.html')
-
     markdown = response.text
+
     markdown = fix_images(markdown, url_prefix + '/')
 
-    _engine = '{0}-{1}'.format(engine, engine_version)
-    engine_root = flask.url_for('static', filename='engines/' + _engine)
-
-    # flask.Markup to disable autoescaping
-    custom_css = flask.Markup(_read_if_exists(url_prefix, md_file_prefix, 'css', _engine))
-
-    _tmp = _read_if_exists(url_prefix, md_file_prefix, 'head.html', _engine)
-    custom_head_html = flask.Markup(Template(_tmp).render(engine_root=engine_root))
-
-    _tmp = _read_if_exists(url_prefix, md_file_prefix, 'body.html', _engine)
-    custom_body_html = flask.Markup(Template(_tmp).render(markdown=markdown, engine_root=engine_root))
-
-    return flask.render_template('render.html',
-                                 title='presentation',
-                                 custom_css=custom_css,
-                                 custom_head_html=custom_head_html,
-                                 custom_body_html=custom_body_html,
-                                 engine=_engine)
+    return render(engine='{0}-{1}'.format(engine, engine_version),
+                  url_prefix=url_prefix,
+                  md_file_prefix=md_file_prefix,
+                  markdown=markdown)
 
 
 @blueprint.route('/v1/github/<path:path>/remark/')
