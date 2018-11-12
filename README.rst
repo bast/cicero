@@ -34,3 +34,10 @@ Authors
   and Blueprint solution)
 - `Roberto Di Remigio <http://totaltrash.xyz>`__ (MathJax support,
   local templating idea, slide splits)
+
+
+Contributions
+-------------
+
+- `Martti Louhivuori <https://github.com/mlouhivu>`__ (first version of the
+  JavaScript and configuration customization)
