@@ -34,7 +34,6 @@ You can **style your slides** to your heart's content.
    :maxdepth: 1
    :caption: Styling your slides
 
-   style/custom.rst
    style/images.rst
    style/background.rst
    style/math.rst
