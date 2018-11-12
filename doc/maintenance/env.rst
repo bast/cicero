@@ -14,4 +14,6 @@ Environment variables
 You will need to define ``CICERO_URL_BASE`` to the URL of your server. This sets the
 URL base for generated links in the Markdown file finder.
 
-As an example, for https://cicero.xyz we set ``CICERO_URL_BASE=https://cicero.xyz``.
+As an example, for https://cicero.xyz we set::
+
+  CICERO_URL_BASE=https://cicero.xyz
