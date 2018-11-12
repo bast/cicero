@@ -34,11 +34,11 @@ You can **style your slides** to your heart's content.
    :maxdepth: 1
    :caption: Styling your slides
 
+   style/css.rst
    style/images.rst
    style/background.rst
    style/math.rst
    style/highlighting.rst
-   style/css.rst
 
 
 .. toctree::
