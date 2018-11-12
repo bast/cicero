@@ -12,7 +12,6 @@ Unreleased.
 - Refactor customization of slides (uses ``*.css``, ``*.head.html``, and ``*.body.html``).
 - Page title is not extracted from the markdown file.
 - Allow to render using https://revealjs.com.
-- Bump requests to 2.20.0.
 
 
 Version 0.1.0
