@@ -1,7 +1,7 @@
 
 
-How to use own CSS
-==================
+How to use your own CSS
+=======================
 
 If you place a file in the same path as your talk, with the same name as your
 talk, and only replace the ``.md`` suffix by ``.css``. Then the rendering engine

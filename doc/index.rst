@@ -37,8 +37,8 @@ You can **style your slides** to your heart's content.
    style/css.rst
    style/images.rst
    style/background.rst
+   style/customize.rst
    style/math.rst
-   style/highlighting.rst
 
 
 .. toctree::
