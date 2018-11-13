@@ -43,5 +43,6 @@ Authors
 Contributions
 -------------
 
+- `Jyry Suvilehto <https://github.com/jyrsa>`__ (setup.py script)
 - `Martti Louhivuori <https://github.com/mlouhivu>`__ (first version of the
   JavaScript and configuration customization)
