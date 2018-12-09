@@ -13,6 +13,7 @@ Examples with `files on GitHub <https://github.com/bast/cicero/tree/master/demo>
 - https://cicero.xyz/v3/remark/0.14.0/github.com/bast/cicero/master/demo/remark/styling/talk.md
 - https://cicero.xyz/v3/remark/0.14.0/github.com/bast/cicero/master/demo/remark/equations/talk.md
 - https://cicero.xyz/v3/remark/0.14.0/github.com/bast/cicero/master/demo/remark/original/talk.md
+- https://cicero.xyz/v3/remark/0.14.0/github.com/bast/cicero/master/demo/remark/header-footer/talk.md
 - https://cicero.xyz/v3/reveal.js/3.7.0/github.com/bast/cicero/master/demo/reveal.js/talk.md
 
 Examples with `files on GitLab <https://gitlab.com/bast/cicero-example/tree/master/demo>`__:
