@@ -76,7 +76,7 @@
             },
             update_links: function() {
                 var vm = this
-                vm.link = '/v2/remark/github/' + vm.user + '/' + vm.repo + '/' + vm.branch + '/' + vm.file
+                vm.link = '/v3/remark/0.14.0/github.com/' + vm.user + '/' + vm.repo + '/' + vm.branch + '/' + vm.file
                 vm.source_link = 'https://github.com/' + vm.user + '/' + vm.repo + '/blob/' + vm.branch + '/' + vm.file
             },
         },
