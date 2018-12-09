@@ -3,7 +3,7 @@
 v3
 ==
 
-This API is the future::
+This API is currently the default::
 
   /v3/<engine>/<engine_version>/<repo>/<branch>/<path>
 
@@ -28,7 +28,7 @@ Examples with `files on GitLab <https://gitlab.com/bast/cicero-example/tree/mast
 v2
 ==
 
-This API is currently the default::
+This API is the past but still supported::
 
   /v2/remark/github/<namespace>/<repo>/<branch>/<path>
 
