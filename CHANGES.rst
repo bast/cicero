@@ -4,10 +4,10 @@ Changelog
 =========
 
 
-Version 1.y.z
+Version 0.2.0
 -------------
 
-Unreleased.
+Released on 2018-12-09.
 
 - Refactor customization of slides (uses ``*.css``, ``*.head.html``, and ``*.body.html``).
 - Page title is not extracted from the markdown file.
