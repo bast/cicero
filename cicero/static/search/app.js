@@ -57,7 +57,7 @@
         },
         created: function() {
             // https://lodash.com/docs#debounce
-            this.debounced_load_repos = _.debounce(this.load_repos, 500)
+            this.debounced_load_repos = _.debounce(this.load_repos, 350)
         },
         methods: {
             load_repos: function() {
