@@ -34,13 +34,22 @@
                 this.debounced_load_repos()
             },
             repo: function(new_repo, old_repo) {
-                this.load_branches()
+                this.clear_branches()
+                if (this.repo != '') {
+                    this.load_branches()
+                }
             },
             branch: function(new_branch, old_branch) {
-                this.load_files()
+                this.clear_files()
+                if (this.branch != '') {
+                    this.load_files()
+                }
             },
             file: function(new_file, old_file) {
-                this.update_links()
+                this.clear_links()
+                if (this.file != '') {
+                    this.update_links()
+                }
             },
             engine: function(new_engine, old_engine) {
                 this.update_links()
@@ -58,12 +67,21 @@
                         vm.repos = response.data
                     })
             },
+            clear_branches: function() {
+                this.branch = ''
+                this.branches = []
+            },
             load_branches: function() {
                 var vm = this
                 axios.get('https://api.github.com/repos/' + this.user + '/' + this.repo + '/branches')
                     .then(function(response) {
                         vm.branches = response.data
                     })
+            },
+            clear_files: function() {
+                this.file = ''
+                this.files = []
+                this.files_loaded = false
             },
             load_files: function() {
                 var vm = this
@@ -77,6 +95,10 @@
                                 vm.files_loaded = true;
                             })
                     })
+            },
+            clear_links: function() {
+                this.link = ''
+                this.source_link = ''
             },
             update_links: function() {
                 var vm = this
