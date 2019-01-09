@@ -59,6 +59,12 @@
         </div>
 
         <div v-if="link != ''">
+          <h4>Select rendering engine:</h4>
+          <input type="radio" id="remark" value="remark/0.14.0" v-model="engine">
+          <label for="remark">remark</label>
+          <input type="radio" id="reveal.js" value="reveal.js/3.7.0" v-model="engine">
+          <label for="reveal.js">reveal.js</label>
+
           <h3><b>Share this link with your friends</b></h3>
           <b><a target="_blank" v-bind:href="link">{{ url_base }}[[ link ]]</a></b>
           <br>

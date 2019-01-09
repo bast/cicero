@@ -25,6 +25,7 @@
             file: '',
             files: [],
             files_loaded: false,
+            engine: 'remark/0.14.0',
             link: '',
             source_link: '',
         },
@@ -39,6 +40,9 @@
                 this.load_files()
             },
             file: function(new_file, old_file) {
+                this.update_links()
+            },
+            engine: function(new_engine, old_engine) {
                 this.update_links()
             },
         },
@@ -76,7 +80,7 @@
             },
             update_links: function() {
                 var vm = this
-                vm.link = '/v3/remark/0.14.0/github.com/' + vm.user + '/' + vm.repo + '/' + vm.branch + '/' + vm.file
+                vm.link = '/v3/' + vm.engine + '/github.com/' + vm.user + '/' + vm.repo + '/' + vm.branch + '/' + vm.file
                 vm.source_link = 'https://github.com/' + vm.user + '/' + vm.repo + '/blob/' + vm.branch + '/' + vm.file
             },
         },
