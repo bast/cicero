@@ -4,6 +4,15 @@ Changelog
 =========
 
 
+Version 0.2.1
+-------------
+
+Released on 2019-01-09.
+
+- Clear fields if user/repo changes.
+- Allow to toggle between remark and reveal.js.
+
+
 Version 0.2.0
 -------------
 
