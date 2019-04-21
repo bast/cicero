@@ -4,11 +4,11 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-pycodestyle = "*"
-pytest = "*"
 requests = ">=2.20"
 flask = "*"
-sphinx-rtd-theme = "*"
-Sphinx = "*"
 
 [dev-packages]
+pycodestyle = "*"
+pytest = "*"
+sphinx-rtd-theme = "*"
+sphinx = "*"
