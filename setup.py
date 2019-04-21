@@ -38,7 +38,7 @@ setup(
     package_data={'': extra_files},
     entry_points={'console_scripts': ['cicero = cicero.main:main']},
     install_requires=[
-        'requests==2.20.0',
+        'requests==2.21.0',
         'flask==1.0.2'
     ],
     classifiers=[
