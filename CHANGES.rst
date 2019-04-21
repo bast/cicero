@@ -4,6 +4,14 @@ Changelog
 =========
 
 
+Version 0.2.x
+-------------
+
+Unreleased.
+
+- Use raw.githubusercontent.com instead of cdn.jsdelivr.net.
+
+
 Version 0.2.1
 -------------
 

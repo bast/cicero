@@ -49,16 +49,12 @@ def render_url_markdown(path, engine, engine_version):
     md_file = _md_file_path[-1]
 
     if service == 'github.com':
-        # we need to translate the reference to a sha (the reference can be a sha)
-        # the reason for this is that cdn.rawgit.com caches files forever
-        # the reference may change but the sha won't
-        # when changing to https://www.jsdelivr.com i haven't verified whether
-        # results are cached so translating to hashes might be overkill
+        # in the old days we used cdn.rawgit.com which cached files forever
+        # and therefore instead of referencing the branch, we referenced the sha
+        # not sure whether raw.githubusercontent.com caches files
+        # so translating to hashes might be overkill
         sha = get_sha_github(owner, repo, ref)
-
-        root = '{0}/{1}@{2}'.format(owner, repo, sha)
-
-        url_prefix = 'https://cdn.jsdelivr.net/gh/{0}/'.format(root)
+        url_prefix = 'https://raw.githubusercontent.com/{0}/{1}/{2}/'.format(owner, repo, sha)
     elif service == 'gitlab.com':
         url_prefix = 'https://{0}/{1}/{2}/raw/{3}/'.format(service, owner, repo, ref)
     else:
