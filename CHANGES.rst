@@ -9,7 +9,7 @@ Version 0.2.x
 
 Unreleased.
 
-- Use raw.githubusercontent.com instead of cdn.jsdelivr.net.
+- Use raw.githubusercontent.com instead of cdn.jsdelivr.net to fetch markdown files.
 
 
 Version 0.2.1

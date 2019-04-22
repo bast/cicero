@@ -55,11 +55,16 @@ def render_url_markdown(path, engine, engine_version):
         # so translating to hashes might be overkill
         sha = get_sha_github(owner, repo, ref)
         url_prefix = 'https://raw.githubusercontent.com/{0}/{1}/{2}/'.format(owner, repo, sha)
+        # we use this image_url_prefix workaround since
+        # raw.githubusercontent.com does not render svg
+        image_url_prefix = 'https://cdn.jsdelivr.net/gh/{0}/{1}@{2}'.format(owner, repo, sha)
     elif service == 'gitlab.com':
         url_prefix = 'https://{0}/{1}/{2}/raw/{3}/'.format(service, owner, repo, ref)
+        image_url_prefix = url_prefix
     else:
         *_url_prefix, md_file = path.split('/')
         url_prefix = 'https://' + '/'.join(_url_prefix)
+        image_url_prefix = url_prefix
         md_file_path = md_file
         md_file_path_root = ''
 
@@ -74,7 +79,7 @@ def render_url_markdown(path, engine, engine_version):
         return flask.render_template('404.html')
     markdown = response.text
 
-    markdown = fix_images(markdown, url_prefix + '/')
+    markdown = fix_images(markdown, image_url_prefix + '/')
 
     return render(engine='{0}-{1}'.format(engine, engine_version),
                   url_prefix=url_prefix,
