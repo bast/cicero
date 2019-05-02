@@ -4,12 +4,13 @@ Changelog
 =========
 
 
-Version 0.2.x
+Version 0.2.2
 -------------
 
-Unreleased.
+Released on 2019-05-02.
 
 - Use raw.githubusercontent.com instead of cdn.jsdelivr.net to fetch markdown files.
+- Update dependencies.
 
 
 Version 0.2.1
