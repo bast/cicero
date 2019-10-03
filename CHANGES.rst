@@ -4,6 +4,15 @@ Changelog
 =========
 
 
+Version 0.2.3
+-------------
+
+Released on 2019-10-03.
+
+- Make it possible to serve local mp4 files.
+- Update dependencies.
+
+
 Version 0.2.2
 -------------
 
