@@ -25,6 +25,13 @@ You can **style your slides** to your heart's content.
 
 .. toctree::
    :maxdepth: 1
+   :caption: Exporting slides
+
+   export.rst
+
+
+.. toctree::
+   :maxdepth: 1
    :caption: Local preview
 
    local.rst
