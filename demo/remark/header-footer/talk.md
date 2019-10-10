@@ -14,8 +14,8 @@ layout: true
 
 <div id="footer-content">
   <p>
-    <img src="img/placeholder-logo.svg" style="width: 50px;"/>
-    This is a customized footer that appears on all slides
+    <img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by.png" style="width: 100px;"/>
+    This is a customized footer with an example logo that appears on all slides
   </p>
 </div>
 
