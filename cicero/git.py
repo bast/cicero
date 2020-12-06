@@ -24,11 +24,8 @@ def get_sha_github(owner, repo, ref):
 
 
 def test_get_sha_github():
-    is_travis_build = os.getenv("TRAVIS", False)
-    # Travis CI is rate-limited by GitHub API
-    if not is_travis_build:
-        sha = get_sha_github("bast", "cicero", "bfa3748447")
-        assert sha == "bfa3748447fe0c7455f19a027575406a0c561a4f"
+    sha = get_sha_github("bast", "cicero", "bfa3748447")
+    assert sha == "bfa3748447fe0c7455f19a027575406a0c561a4f"
 
 
 def set_url_base(host, port):

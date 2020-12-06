@@ -28,5 +28,6 @@ jobs:
       run: flit install --symlink
     - name: Run tests
       run: |
-        pytest -v cicero/git.py
         pytest -v cicero/images.py
+# taken out because it tests a rate-limited API
+#       pytest -v cicero/git.py
