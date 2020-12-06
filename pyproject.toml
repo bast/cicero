@@ -1,0 +1,26 @@
+[build-system]
+requires = ["flit_core >=2,<4"]
+build-backend = "flit_core.buildapi"
+
+[tool.flit.metadata]
+module = "cicero"
+author = "Radovan Bast"
+author-email = "radovan.bast@uit.no"
+home-page = "https://github.com/bast/cicero"
+requires=[
+    "requests==2.21.0",
+    "flask==1.0.2",
+]
+description-file="README.rst"
+classifiers = ["License :: OSI Approved :: GNU Affero General Public License v3"]
+
+[tool.flit.scripts]
+cicero = "cicero.main:main"
+
+[tool.flit.metadata.requires-extra]
+test = [
+    "pytest",
+]
+dev = [
+    "black",
+]

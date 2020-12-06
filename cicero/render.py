@@ -18,7 +18,7 @@ def _read_if_exists(url_prefix, custom_prefix, suffix, engine):
         if response.status_code != 404:
             return response.text
 
-    vendor_file_name = os.path.join(os.path.dirname(__file__), 'templates', 'engines', engine, 'vendor.' + suffix)
+    vendor_file_name = os.path.join(os.path.dirname(__file__), 'static', 'engines', engine, 'vendor.' + suffix)
     if os.path.isfile(vendor_file_name):
         with io.open(vendor_file_name, 'r') as f:
             return f.read()
