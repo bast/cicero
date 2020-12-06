@@ -1,5 +1,5 @@
-.. image:: https://travis-ci.org/bast/cicero.svg?branch=master
-   :target: https://travis-ci.org/bast/cicero/builds
+.. image:: https://github.com/bast/cicero/workflows/Test/badge.svg
+   :target: https://github.com/bast/cicero/actions
 .. image:: https://img.shields.io/badge/license-%20AGPLv3-blue.svg
    :target: LICENSE
 .. image:: https://img.shields.io/badge/vue-2.5.16-green.svg
