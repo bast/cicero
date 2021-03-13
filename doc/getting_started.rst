@@ -53,8 +53,8 @@ Let us assume your talk is on (replace ``<namespace>`` and ``<repository>``)::
 
 You can now visit (replace ``<namespace>`` and ``<repository>``)::
 
-  https://cicero.xyz/v3/remark/0.14.0/github.com/<namespace>/<repository>/master/mytalk.md
+  https://cicero.xyz/v3/remark/0.14.0/github.com/<namespace>/<repository>/main/mytalk.md
 
-Of course you can reference another branch or tag or hash than ``master``.
+Of course you can reference another branch or tag or hash than ``main``.
 
-If you like https://revealjs.com better, then check https://github.com/bast/cicero/tree/master/demo/reveal.js.
+If you like https://revealjs.com better, then check https://github.com/bast/cicero/tree/main/demo/reveal.js.
