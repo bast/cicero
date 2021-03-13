@@ -53,7 +53,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'Cicero'
-copyright = u'2015-2018, Radovan Bast, Ole Martin Bjørndalen, and Roberto Di Remigio'
+copyright = u'2015-2021, Radovan Bast, Ole Martin Bjørndalen, and Roberto Di Remigio'
 author = u'Radovan Bast, Ole Martin Bjørndalen, and Roberto Di Remigio'
 
 # The version info for the project you're documenting, acts as replacement for
