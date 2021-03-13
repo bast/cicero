@@ -4,6 +4,15 @@ Changelog
 =========
 
 
+Version 0.2.4
+-------------
+
+Released on 2021-03-13.
+
+- Move from Travis CI to GitHub Actions.
+- Simplify packaging and deployment.
+
+
 Version 0.2.3
 -------------
 
