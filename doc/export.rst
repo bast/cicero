@@ -9,4 +9,9 @@ https://github.com/astefanutti/decktape.
 First install the tool following https://github.com/astefanutti/decktape#install,
 then you can export slides, e.g.::
 
-  $ decktape http://cicero.xyz/v3/remark/0.14.0/github.com/coderefinery/social-coding/master/talk.md/ my-slides.pdf
+  $ decktape https://example.org/my-slides.md/ my-slides.pdf
+
+If you prefer not to install it but have Singularity installed, you can do this instead::
+
+  $ singularity pull docker://astefanutti/decktape
+  $ ./decktape_latest.sif https://example.org/my-slides.md/ my-slides.pdf
