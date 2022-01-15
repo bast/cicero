@@ -4,6 +4,15 @@ Changelog
 =========
 
 
+Version 0.2.5
+-------------
+
+Released on 2022-01-15.
+
+- Do not restrict requests and flask versions.
+- Make it run on Python 3.10.
+
+
 Version 0.2.4
 -------------
 
