@@ -13,5 +13,5 @@ then you can export slides, e.g.::
 
 If you prefer not to install it but have Singularity installed, you can do this instead::
 
-  $ singularity pull docker://astefanutti/decktape:3.7
-  $ ./decktape_3.7.sif https://example.org/my-slides.md/ my-slides.pdf
+  $ singularity pull docker://astefanutti/decktape
+  $ ./decktape_latest.sif https://example.org/my-slides.md/ my-slides.pdf
